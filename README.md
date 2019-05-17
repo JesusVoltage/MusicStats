@@ -20,12 +20,28 @@ El proyecto consistirá en la realización de una página web, en la que su prin
 - Express (4.16.4)
 - Sass(scss, Bootstrap 4)
 
-3.- Funcionalidades principales de la página:
+3.- Server
 
-- Login de usuarios.
-- Bases de datos obtenida por una API externa con todos los datos requeridos sobre Discos, Artistas, para su exposición al usuario de diferentes formas aún no pensadas exactamente.
-- Los usuarios podrán votar del 1-10 cuanto les gusta cierto LP, EP de cierto artista
-- Los usuarios podrán realizar críticas a los trabajos de los músicos, y se podrán comentar dichas críticas
-- Se creará una intranet para gestionar, el tráfico de usuarios, comentarios, y algunas estadísticas aún no pensadas, pero que tendrán que ver con la cantidad de votos en un diferente estilo, EPs de un artista en concreto, etc.
+- El servidor es un servidor Node.JS creado desde 0, en la que le instalo todas las dependencias que muestro a continuación:
+
+-- Dependencias del servidor:
+
+-- Dependencias de desarrollo:
+
+El nucleo de la Base de datos será MongoDB en la que habra las siguientes colecciones:
+
+Usuarios(
+  id_public: String,
+  username: String,
+  
+)
+
+3.- Front:
+
+- El front está desrrollado en Angular7, para los estilos me ayudo de Bootstrap4 y mas librerías, (vease la guía de estilo)
+
+- La estructura de los componentes así como el enrutado utilizado será el siguiente:
+
+Habrá un elemento padre llamado Home, el que contendrá todo lo demas. 
 
 
