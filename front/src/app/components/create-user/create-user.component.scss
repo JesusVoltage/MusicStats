@@ -1,0 +1,31 @@
+@import "../../app.component.scss";
+
+h1,h2,h3,h4,h5,h6 {
+  color: $grey;
+  font-family: Righteous;
+}
+
+.input-container {
+  font-family: $normal;
+  margin-left: 20%;
+  margin-top: 25px;
+  padding: 10px;
+  width: 60%;
+}
+.button-container{
+    margin-top: 25px;
+    margin: 10px 25px;
+    button{
+        font-family: $semibold;
+        padding: 10px 30px 10px 30px;
+        border: none;
+        background: $blue-dark;
+    }button:active{
+        background: $blue-dark;
+        border: none;
+    }
+}
+
+input {
+  width: 100%;
+}
