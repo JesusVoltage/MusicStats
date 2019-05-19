@@ -1,6 +1,6 @@
 # MusicStats
 
-## Anteproyecto
+## Memoria del proyecto
 
 Jesús Reyes Real
 
