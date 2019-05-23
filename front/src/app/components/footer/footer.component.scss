@@ -1,0 +1,52 @@
+@import "../../app.component.scss";
+
+
+.bg-negro{
+    background: $blue-main;
+}
+
+footer{
+    margin-top: 25px; 
+    color: $light !important;
+    a{
+
+        text-decoration: none !important;
+    }
+}
+
+footer a:hover{
+    color: white;
+  }
+  
+  .footer-bottom{
+    padding: 2em;
+  }
+  .footer-middle{
+    padding-top: 2em;
+    color: white;
+  }
+  /**Sub Navigation**/
+  .subnavigation-container{
+    background: #e6ffff;
+  }
+  .subnavigation .nav-link{
+    color: white;
+    font-weight: bold;
+  }
+  .subnavigation-container{
+    text-align: center;
+  }
+  .subnavigation-container .navbar{
+    display: inline-block;
+    margin-bottom: -6px; /* Inline-block margin offffset HACK -Gilron */
+  }
+  .col-subnav a{
+    padding: 1rem 1rem;
+    color: white;
+    font-weight: bold;
+  }
+  .col-subnav .active{
+    border-top:5px solid orange;
+    background: white;
+    color: black;
+  }

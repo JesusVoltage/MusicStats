@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './components/user/user.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { AlbumComponent } from './components/album/album.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
     NavbarComponent,
     UserComponent,
     CreateUserComponent,
+    AlbumComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,24 +2,58 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-8 offset-sm-2 p-4 rounded bg-claro shadow">
+
         <h3>Crear nueva cuenta de Musicstats</h3>
-        <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+
+        <form class="" #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+
           <div class="d-flex  flex-column">
+
             <div class="input-container justify-content-center">
               <h6>Nombre</h6>
               <input class="form-control" type="text" name="nombre" #nombre="ngModel"
                 [(ngModel)]="userService.selectedUser.nombre">
             </div>
+
             <div class="input-container justify-content-centerr">
               <h6>Apellidos</h6>
               <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
                 [(ngModel)]="userService.selectedUser.apellidos">
             </div>
+
+            <div class="input-container justify-content-centerr">
+              <h6>Nombre de Usuario</h6>
+              <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
+                [(ngModel)]="userService.selectedUser.apellidos">
+            </div>
+
+            <div class="input-container justify-content-centerr">
+              <h6>Correo Electrónico</h6>
+              <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
+                [(ngModel)]="userService.selectedUser.apellidos">
+            </div>
+
+            <div class="input-container justify-content-centerr">
+              <h6>Contraseña</h6>
+              <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
+                [(ngModel)]="userService.selectedUser.apellidos">
+            </div>
+
+            <div class="input-container justify-content-centerr">
+              <h6>Confirma Contraseña</h6>
+              <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
+                [(ngModel)]="userService.selectedUser.apellidos">
+            </div>
+
+
             <div class="button-container align-self-end">
               <button class="btn btn-dark">Registrarse</button>
             </div>
+
           </div>
+
         </form>
+
       </div>
     </div>
   </div>
