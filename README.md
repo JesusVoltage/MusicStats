@@ -12,6 +12,8 @@ MusicStats
 
 El proyecto consistirá en la realización de una página web, en la que su principal funcionalidad será la de contabilizar puntuaciones de discos musicales, comentarios así como críticas entre otros.
 
+Tendrá un frontal realizado en Angular7, con ayuda de bootstrap4 y alguna librería mas que aclaro en la guia de estilo.
+
 2.- Tecnologías a usar:
 
 - Angular7
