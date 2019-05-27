@@ -9,6 +9,9 @@ $yellow:  #E59117;
 $grey: #505050;
 $light: #f6f6f6;
 
+
+
+
 $semibold: 'Open Sans', semibold;
 $normal: 'Open Sans', regular;
 
@@ -19,6 +22,10 @@ $normal: 'Open Sans', regular;
 
 .bg-claro{
     background: $light;
+}
+
+.bg-blue-dark{
+    background: $blue-dark;
 }
 
 .shadow{
