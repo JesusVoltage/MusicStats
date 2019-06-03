@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  albums: any[] = [];
+
+  constructor(private spotify: SpotifyService) { }
+
+  buscar(termino: string) {
+    console.log(termino);
+
+    // this.loading = true;
+    this.spotify.getAlbums(termino)
+      .subscribe((data: any) => {
+        console.log(data);
+          this.albums = data;
+        
+      });
+  }
+
 
   ngOnInit() {
   }

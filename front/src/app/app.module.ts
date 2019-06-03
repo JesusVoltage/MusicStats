@@ -12,6 +12,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { AlbumComponent } from './components/album/album.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { IniciaSesionComponent } from './components/inicia-sesion/inicia-sesion.component';
+import { TopsComponent } from './components/tops/tops.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { IniciaSesionComponent } from './components/inicia-sesion/inicia-sesion.
     AlbumComponent,
     FooterComponent,
     IniciaSesionComponent,
+    TopsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 @import "../../app.component.scss";
 
 .navbar-main {
+
+
   height: 120px;
   background: $blue-main;
   margin-bottom: 15px;
@@ -21,6 +23,10 @@
   }
 
   .search {
+
+    #albums::-ms-expand {
+      display: none;
+  }
 
 
     .form-control-feedback {
@@ -48,11 +54,23 @@
       border-radius: 0 !important;
       box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
+    .form-control::-webkit-calendar-picker-indicator {
+      display: none;
+    }
     i {
       font-size: 10%;
       background: url(/front/src/assets/icons/lupa.svg);
     }
   } 
+
+  .resultado{
+    position:absolute;
+    display:block;
+    width: 60%;
+    height: 150px;
+
+    background:#0CF;
+  }
 
   .login {
     font-family: $semibold;
