@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumComponent implements OnInit {
 
+
+  private beCritic: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
-  }
+ }
 
 }

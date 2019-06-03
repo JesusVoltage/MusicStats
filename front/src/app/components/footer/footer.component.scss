@@ -46,7 +46,18 @@ footer a:hover{
     font-weight: bold;
   }
   .col-subnav .active{
-    border-top:5px solid orange;
     background: white;
     color: black;
+  }
+
+  .icon-bar{
+    font-size: 350%;
+    i{
+      color: white;
+      padding: 50px;
+      transition: 0.3s;
+    }i:hover{
+      transform: scale(1.5);
+      color: white;
+    }
   }
