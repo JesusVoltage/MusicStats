@@ -13,6 +13,12 @@ import { AlbumComponent } from './components/album/album.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { IniciaSesionComponent } from './components/inicia-sesion/inicia-sesion.component';
 import { TopsComponent } from './components/tops/tops.component';
+// import { RouterModule, Routes } from '@angular/router';
+
+// const appRoutes: Routes = [
+//   { path: 'album', component: AlbumComponent},
+// ];
+
 
 @NgModule({
   declarations: [
@@ -27,6 +33,10 @@ import { TopsComponent } from './components/tops/tops.component';
     TopsComponent,
   ],
   imports: [
+    // RouterModule.forRoot(
+    //   appRoutes,
+    //   { enableTracing: true } // <-- debugging purposes only
+    // ),
     BrowserModule,
     AppRoutingModule,
     FormsModule,

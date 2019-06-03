@@ -24,7 +24,7 @@ export class SpotifyService {
     // Defino Headers que API de Spotify Necesita
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQCv6JpHaTmP-EyJ-eN3bVbMrHlNbeyKhB2fndbKnXjSYKHKNVYk7_SthFTyrjPbp_gLiwyhNUXptuh0qHQ"
+        "Bearer BQArVcXbCiWwm4MDBs4FMBt4adl3B51ZLsGPPSECPgwYZjoN0ErLHUGz8f-lwLwbzHxTbLiG5YoswbYnClk"
     });
 
     return this.http.get(url, { headers });
@@ -43,6 +43,12 @@ export class SpotifyService {
   getTopEspaña(){
     return this.getQuery(`playlists/37i9dQZF1DXaxEKcoCdWHD/tracks?fields=items&limit=10`).pipe(
       map(data => data['items']) 
+    );
+  }
+
+  getAlbumData(idAlbum: string){
+    return this.getQuery(`albums/${idAlbum}`).pipe(
+      map(data => data)
     );
   }
 

@@ -1,8 +1,6 @@
 @import "../../app.component.scss";
 
 .navbar-main {
-
-
   height: 120px;
   background: $blue-main;
   margin-bottom: 15px;
@@ -23,23 +21,20 @@
   }
 
   .search {
-
     #albums::-ms-expand {
       display: none;
-  }
-
+    }
 
     .form-control-feedback {
-        
-        justify-content: right;
-        position: absolute;
-        z-index: 2;
-        width:  30%;
-        height: 2.375rem;
-        line-height: 2.375rem;
-        text-align: right;
-        pointer-events: none;
-        color: $light;
+      justify-content: right;
+      position: absolute;
+      z-index: 2;
+      width: 30%;
+      height: 2.375rem;
+      line-height: 2.375rem;
+      text-align: right;
+      pointer-events: none;
+      color: $light;
     }
 
     display: flex;
@@ -61,15 +56,15 @@
       font-size: 10%;
       background: url(/front/src/assets/icons/lupa.svg);
     }
-  } 
+  }
 
-  .resultado{
-    position:absolute;
-    display:block;
+  .resultado {
+    position: absolute;
+    display: block;
     width: 60%;
     height: 150px;
 
-    background:#0CF;
+    background: #0cf;
   }
 
   .login {
@@ -80,6 +75,35 @@
     color: $light;
     a {
       color: $light;
+    }
+  }
+  .lista {
+    background: $light;
+    position: absolute !important;
+    height: auto;
+    margin-top: 2.375rem;
+    width: 35%;
+    z-index: 999;
+    .albuncito {
+      font-family: $semibold;
+      display: flex;
+      justify-content: left;
+      transition: 0.5;
+      border: solid $light 1px;
+      .foto {
+        width: 20%;
+      }
+      .texto {
+        width: 80%;
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 90%;
+        }
+      }
+    }
+    .albuncito:hover {
+      border: solid $blue-dark 1px;
     }
   }
 }

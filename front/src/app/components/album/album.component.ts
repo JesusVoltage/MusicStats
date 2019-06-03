@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
   selector: 'app-album',
@@ -9,10 +10,40 @@ export class AlbumComponent implements OnInit {
 
 
   private beCritic: boolean = false;
-
-  constructor() { }
+  private idAlbum: string = "54u9GTdRtlAAjUvxyxsAAy";
+  private albumData: any;
+  private img: string;
+  private name: string;
+  private artistas: string = '';
+  private ano: string;
+  private canciones: any[] = []; 
+  constructor(private spotify: SpotifyService) { }
 
   ngOnInit() {
- }
+    this.getAlbumData();
+  }
+
+  getAlbumData() {
+    // this.loading = true;
+    this.spotify.getAlbumData(this.idAlbum)
+      .subscribe((data: any) => {
+        this.albumData = data;
+        console.log(this.albumData);
+        this.img = this.albumData['images'][0].url
+        this.name = this.albumData['name'];
+        for (let index = 0; index < this.albumData.artists.length; index++) {
+          this.artistas += (String(this.albumData.artists[index].name));
+          if(index > 0 && index < this.albumData.artists.length){
+            this.artistas += ' - ';
+          }
+        }
+        for (let index = 0; index < data['tracks'].items.length; index++) {
+          this.canciones.push(data['tracks'].items[index].name);
+          
+        }
+         this.ano = data['release_date'];
+      });
+
+  }
 
 }

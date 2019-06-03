@@ -6,12 +6,21 @@
 
   <div class="search">
     <span class="fa fa-search form-control-feedback"></span>
-    <input #termino list="albums" (keyup)="buscar(termino.value)" type="text" class="form-control" id="usr">
-    <datalist id="albums">
-      <option *ngFor="let album of albums">
-          {{album.name}} - {{album.release_date}}
-      </option>
-    </datalist>
+    <input #termino list="albums" (input)="tcode=$event.target.value" (keyup)="buscar(termino.value)" type="text"
+      class="form-control" id="usr">
+
+    <div class="lista shadow" *ngIf="open">
+      <div class="p-1 albuncito" *ngFor="let album of albums">
+        <div class="foto">
+
+          <img class="img-fluid" src={{album.images[2].url}} alt="">
+        </div>
+        <div class="texto">
+          <p class="ml-1">{{album.name}}<br>
+          {{album.artists[0].name}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="login">

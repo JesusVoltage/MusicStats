@@ -9,23 +9,37 @@ import { SpotifyService } from '../../services/spotify.service';
 export class NavbarComponent implements OnInit {
 
   albums: any[] = [];
+  private open: boolean = false;
 
   constructor(private spotify: SpotifyService) { }
 
   buscar(termino: string) {
-    console.log(termino);
+
+
 
     // this.loading = true;
     this.spotify.getAlbums(termino)
       .subscribe((data: any) => {
-        console.log(data);
-          this.albums = data;
-        
+
+
+        this.albums = data;
+        if (termino.length > 2) {
+          this.open = true;
+        } else {
+          this.open = false;
+        }
+
+
       });
   }
 
 
   ngOnInit() {
+
+
+  }
+
+  goToAlbum(id: String) {
   }
 
 }
