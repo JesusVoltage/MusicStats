@@ -35,13 +35,23 @@ h1,h2,h3,h4,h5,h6 {
   color: $light;
   display: table;
   p{
-    display: table-cell;
+    display: flex;
+    width: 100%;
+    justify-content: center;
     vertical-align: middle;
   }
   button{
     width: 100%;
-  height: 45px;
-  text-decoration: none;
+    height: 45px;
+    text-decoration: none;
+    display: table;
+    p{
+      margin-top: 3px;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      vertical-align: middle; 
+    }
   }
 }
 
@@ -49,6 +59,12 @@ h1,h2,h3,h4,h5,h6 {
   .song{
     font-size: 90%;
     background: $light;
+    font-family: $semibold;
+  }
+}
+
+.criticas{
+  button{
     font-family: $semibold;
   }
 }

@@ -6,17 +6,26 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-5 col-xl-4 p-4 album-container">
-              <img  class="img-fluid" src="../../../assets/acdc.jpg">
+              <img class="img-fluid" src="../../../assets/acdc.jpg">
               <div class="d-flex justify-content-between">
                 <div class="bg-blue-dark puntuacion text-center">
                   <p>9.6</p>
                 </div>
                 <div class="dropdown bg-blue-dark tu-puntuacion text-center">
                   <button type="button" class="btn dropdown-toggle text-center" data-toggle="dropdown">
-                    <p class="text-center">10</p>
+                    <p class="text-center text-light">10</p>
                   </button>
-                  <div class="dropdown-menu">
-                    <a *ngfor="" class="dropdown-item" href="#">{{a}}</a>
+                  <div class="dropdown-menu text-light">
+                    <a class="dropdown-item" href="#">1</a>
+                    <a class="dropdown-item" href="#">2</a>
+                    <a class="dropdown-item" href="#">3</a>
+                    <a class="dropdown-item" href="#">4</a>
+                    <a class="dropdown-item" href="#">5</a>
+                    <a class="dropdown-item" href="#">6</a>
+                    <a class="dropdown-item" href="#">7</a>
+                    <a class="dropdown-item" href="#">8</a>
+                    <a class="dropdown-item" href="#">9</a>
+                    <a class="dropdown-item" href="#">10</a>
                   </div>
                 </div>
               </div>
@@ -46,4 +55,35 @@
       </div>
     </div>
   </div>
+  <br>
+  <br>
+
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <div class="col-sm-8 offset-sm-2 p-4 rounded bg-claro shadow criticas">
+        <h3>Críticas</h3>
+        <p class="text-center">No hay criticas aún de este album, Escribe una ahora mismo</p>
+        <br>
+        <hr>
+        <br>
+
+        <div class="form-group">
+          <label for="comment">Nueva Crítica</label>
+          <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+
+        <div class="d-flex justified-content-center">
+          <button class="btn btn-primary p-2 px-3 ">
+            Publicar crítica
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
