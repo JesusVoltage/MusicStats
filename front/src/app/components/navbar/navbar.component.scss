@@ -98,7 +98,9 @@
         p {
           overflow: hidden;
           text-overflow: ellipsis;
-          font-size: 90%;
+          span{
+            font-size: 90%; 
+          }
         }
       }
     }
