@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,7 +11,10 @@ export class NavbarComponent implements OnInit {
   albums: any[] = [];
   private open: boolean = false;
 
-  constructor(private spotify: SpotifyService) { }
+  constructor(
+    private spotify: SpotifyService,
+    private router: Router,
+    ) { }
 
   buscar(termino: string) {
 
@@ -39,7 +42,9 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  goToAlbum(id: String) {
-  }
+  // goToAlbum(id: String): void{
+  //   console.log(id);
+  //   this.router.navigate(['album/'+id]);
+  // }
 
 }

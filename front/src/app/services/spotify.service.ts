@@ -61,7 +61,7 @@ export class SpotifyService {
     // Defino Headers que API de Spotify Necesita
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQDgJjcyO84DlYg43RyHPsd3vWmvrc5yMJytdXQ_vD2EIEDbDuksSSBcgesl7BIJTGu533V5ZyVuD6t4R4w"
+        "Bearer BQADBHR5IfEANHYUJ-KKv4Pl9UXVej3mxYFFU9M_eu8k8iU2dr-j40x66-Q5pe9eYY346s1Z28cMbByHXI0"
     });
 
     return this.http.get(url, { headers });

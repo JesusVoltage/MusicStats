@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
-
+import { ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
@@ -10,22 +11,24 @@ export class AlbumComponent implements OnInit {
 
 
   private beCritic: boolean = false;
-  private idAlbum: string = "54u9GTdRtlAAjUvxyxsAAy";
+  private idAlbum: string = "";
   private albumData: any;
   private img: string;
   private name: string;
   private artistas: string = '';
   private ano: string;
   private canciones: any[] = []; 
-  constructor(private spotify: SpotifyService) { }
+  constructor(private spotify: SpotifyService, private router: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getAlbumData();
+    console.log(this.router.snapshot.params['id']);
+    this.idAlbum = this.router.snapshot.params['id'];
+    this.getAlbumData(this.idAlbum);
   }
 
-  getAlbumData() {
+  getAlbumData(id: any) {
     // this.loading = true;
-    this.spotify.getAlbumData(this.idAlbum)
+    this.spotify.getAlbumData(id)
       .subscribe((data: any) => {
         this.albumData = data;
         console.log(this.albumData);

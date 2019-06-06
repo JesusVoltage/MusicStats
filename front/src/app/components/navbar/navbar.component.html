@@ -10,21 +10,24 @@
       class="form-control" id="usr">
 
     <div class="lista shadow" *ngIf="open">
-      <div class="p-1 albuncito" *ngFor="let album of albums">
-        <div class="foto">
-
-          <img class="img-fluid" src={{album.images[1].url}} alt="">
-        </div>
-        <div class="texto">
-          <p class="ml-1">{{album.name}}<br>
-          <span>{{album.artists[0].name}}</span></p>
-        </div>
+      <div   class="p-1 albuncito" *ngFor="let album of albums">
+<a [routerLink]="['album', {id: album.id}]">
+  <div class="foto">
+    
+    <img class="img-fluid"  src={{album.images[1].url}} alt="">
+  </div>
+  <div class="texto">
+    <p class="ml-1">{{album.name}}<br>
+      <span>{{album.artists[0].name}}</span></p>
+    </div>
+    
+  </a>
       </div>
     </div>
   </div>
 
   <div class="login">
-    <a href="#">Iniciar Sesion</a>
+    <a routerLink="album" >Iniciar Sesion</a>
     <span> / </span>
     <a href="#">Registrarse</a>
   </div>
