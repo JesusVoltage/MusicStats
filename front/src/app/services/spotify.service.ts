@@ -4,6 +4,18 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 //importar map reactive extentions
 import { map } from "rxjs/operators";
 
+
+
+
+
+
+
+
+
+
+
+
+
 // Por lo general cuando se trabaja con API
 // Es necesario Centralizar la Informacion por eso este Service
 
@@ -16,6 +28,31 @@ export class SpotifyService {
     // console.log('Spotify Service Listo');
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Para  consulta generica
   getQuery(query: string) {
     const url = `https://api.spotify.com/v1/${query}`;
@@ -24,7 +61,7 @@ export class SpotifyService {
     // Defino Headers que API de Spotify Necesita
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQByHNIxWvydd86IjkZVyoERuFdqAzlCsROxFXroyMvrnAwNeSrAPYKyaOf06RICHijdVAxfusShtAIvvhg"
+        "Bearer BQADBHR5IfEANHYUJ-KKv4Pl9UXVej3mxYFFU9M_eu8k8iU2dr-j40x66-Q5pe9eYY346s1Z28cMbByHXI0"
     });
 
     return this.http.get(url, { headers });

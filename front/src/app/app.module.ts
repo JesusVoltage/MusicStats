@@ -33,10 +33,6 @@ import { TopsComponent } from './components/tops/tops.component';
     TopsComponent,
   ],
   imports: [
-    // RouterModule.forRoot(
-    //   appRoutes,
-    //   { enableTracing: true } // <-- debugging purposes only
-    // ),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
