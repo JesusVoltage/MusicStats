@@ -87,7 +87,9 @@
     .albuncito {
       font-family: $semibold;
       display: flex;
+      color: black;
       justify-content: left;
+      text-decoration: none;
       transition: 0.5;
       border: solid $light 1px;
       .foto {

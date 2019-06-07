@@ -1,33 +1,33 @@
 <div class="navbar-main d-flex justify-content-between align-items-center shadow">
 
   <div class="tittle">
-    <h1 routerLink="/tops" routerLinkActive="active">Musicstats</h1>
+    <h1 routerLink="" routerLinkActive="active">Musicstats</h1>
   </div>
 
   <div class="search">
     <span class="fa fa-search form-control-feedback"></span>
-    <input #termino list="albums" (input)="tcode=$event.target.value" (keyup)="buscar(termino.value)" type="text"
+    <input #termino list="albums" (click)="onInput();" (input)="tcode=$event.target.value" (keyup)="buscar(termino.value)" type="text"
       class="form-control" id="usr">
 
-    <div class="lista shadow" *ngIf="open">
-      <div   class="p-1 albuncito" *ngFor="let album of albums">
-<a [routerLink]="['album', {id: album.id}]">
-  <div class="foto">
-    
-    <img class="img-fluid"  src={{album.images[1].url}} alt="">
-  </div>
-  <div class="texto">
-    <p class="ml-1">{{album.name}}<br>
-      <span>{{album.artists[0].name}}</span></p>
-    </div>
-    
-  </a>
+    <div class="lista shadow" *ngIf="open && !clicked">
+      <div  *ngFor="let album of albums" (click)="onLink();">
+        <a class="p-1 albuncito" routerLink="album/{{album.id}}">
+          <div class="foto">
+
+            <img class="img-fluid" src={{album.images[1].url}} alt="">
+          </div>
+          <div class="texto">
+            <p class="ml-1">{{album.name}}<br>
+              <span>{{album.artists[0].name}}</span></p>
+          </div>
+
+        </a>
       </div>
     </div>
   </div>
 
   <div class="login">
-    <a routerLink="album" >Iniciar Sesion</a>
+    <a routerLink="album">Iniciar Sesion</a>
     <span> / </span>
     <a href="#">Registrarse</a>
   </div>

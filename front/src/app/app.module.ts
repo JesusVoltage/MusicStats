@@ -13,6 +13,7 @@ import { AlbumComponent } from './components/album/album.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { IniciaSesionComponent } from './components/inicia-sesion/inicia-sesion.component';
 import { TopsComponent } from './components/tops/tops.component';
+import { WellcomeComponent } from "./components/wellcome/wellcome.component";
 // import { RouterModule, Routes } from '@angular/router';
 
 // const appRoutes: Routes = [
@@ -31,6 +32,7 @@ import { TopsComponent } from './components/tops/tops.component';
     FooterComponent,
     IniciaSesionComponent,
     TopsComponent,
+    WellcomeComponent,
   ],
   imports: [
     BrowserModule,

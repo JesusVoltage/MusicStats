@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
 
   albums: any[] = [];
   private open: boolean = false;
+  private clicked: boolean = false;
 
   constructor(
     private spotify: SpotifyService,
@@ -39,9 +40,15 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
-
   }
 
+  onLink(){
+    this.clicked = true;
+  }
+
+  onInput(){
+    this.clicked = false;
+  }
   // goToAlbum(id: String): void{
   //   console.log(id);
   //   this.router.navigate(['album/'+id]);

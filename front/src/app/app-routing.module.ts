@@ -6,11 +6,11 @@ import { AlbumComponent } from './components/album/album.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'album/id', component: AlbumComponent },
+  { path: 'album/:id', component: AlbumComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: "reload"})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

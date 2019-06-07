@@ -13,22 +13,21 @@ export class AlbumComponent implements OnInit {
   private beCritic: boolean = false;
   private idAlbum: string = "";
   private albumData: any;
-  private img: string;
-  private name: string;
+  private img: string = '';
+  private name: string = '';
   private artistas: string = '';
-  private ano: string;
+  private ano: string = '';
   private canciones: any[] = []; 
-  constructor(private spotify: SpotifyService, private router: ActivatedRoute) { }
+  constructor(private spotify: SpotifyService, private activatedRouter: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-    console.log(this.router.snapshot.params['id']);
-    this.idAlbum = this.router.snapshot.params['id'];
-    this.getAlbumData(this.idAlbum);
-  }
+  async ngOnInit() {
+    this.activatedRouter.params.subscribe(routeParams => {
+      this.idAlbum = this.activatedRouter.snapshot.params['id'];
+      console.log(this.idAlbum);
 
-  getAlbumData(id: any) {
-    // this.loading = true;
-    this.spotify.getAlbumData(id)
+      this.artistas = '';
+      this.canciones = [];
+      this.spotify.getAlbumData(this.idAlbum)
       .subscribe((data: any) => {
         this.albumData = data;
         console.log(this.albumData);
@@ -46,6 +45,14 @@ export class AlbumComponent implements OnInit {
         }
          this.ano = data['release_date'];
       });
+    });
+    console.log(this.activatedRouter.snapshot.params['id']);
+    
+  }
+
+ getAlbumData(id: any) {
+    // this.loading = true;
+
 
   }
 

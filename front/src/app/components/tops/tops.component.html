@@ -1,3 +1,4 @@
+<app-wellcome></app-wellcome>
 <section>
   <div class="container-fluid">
     <div class="row">
@@ -6,26 +7,26 @@
         <h3 class="p-2 mb-4">Top 10 - España</h3>
         <div class="row p-1">
           <div class="container-fluid top text-center d-flex d-flex justify-content-around">
-            <div routerLink="/album" routerLinkActive="active" *ngFor="let album of topEspana" class="contenedor album">
+            <a routerLink="album/{{album.track.album.id}}" routerLinkActive="active" *ngFor="let album of topEspana" class="contenedor album">
                 <img src={{album.track.album.images[0].url}} class="image img-fluid">
                 <div class="overlay overlayBottom">
                     <div class="text">
                       {{album.track.album.name}}
                     </div>
                 </div>
-            </div>
+              </a>
           </div>
         </div>
         <div class="row p-1">
           <div class="container-fluid top text-center d-flex d-flex justify-content-around">
-              <div routerLink="/album" *ngFor="let album of topEspana2" class="contenedor album">
+              <a routerLink="album/{{album.track.album.id}}" *ngFor="let album of topEspana2" class="contenedor album">
                   <img src={{album.track.album.images[0].url}} class="image img-fluid">
                   <div class="overlay overlayBottom">
                       <div class="text">
                         {{album.track.album.name}}
                       </div>
                   </div>
-              </div>
+                </a>
           </div>
         </div>
       </div>

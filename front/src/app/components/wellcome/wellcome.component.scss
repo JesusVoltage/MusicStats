@@ -1,0 +1,90 @@
+@import "../../app.component.scss";
+
+h1,h2,h3,h4,h5,h6 {
+  color: $grey;
+  font-family: Righteous;
+}
+p{font-family: $semibold}
+.top{
+    .album{
+        margin: 5px;
+        width: 100%;
+    }
+}
+
+
+.title{
+  font-family: sans-serif;
+  color: #dc2d5e;
+}
+.contenedor {
+  width: 10%;
+  position: relative;
+  display: inline-block;
+}
+
+.image {
+  display: block;
+}
+
+
+.text {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: $semibold;
+}
+.overlayFade{
+  height: 100%;
+  width:100%;
+  top:0;
+  left:0;
+  background-color: #ff946bbd;
+}
+.overlay {
+  position: absolute;
+  opacity: 0;
+  transition:all .3s ease;
+  background-color: #008cba;
+}
+.contenedor:hover .overlay,.contenedor:hover .overlayFade {
+  opacity: 1;
+}
+
+.overlayLeft{
+  height: 100%;
+  width:0;
+  top:0;
+  left:0;
+  background-color: #00b1ba;
+}
+.overlayRight{
+  height: 100%;
+  width: 0;
+  top:0;
+  right:0;
+  background-color: #12888e;
+}
+.contenedor:hover .overlayLeft ,.contenedor:hover .overlayRight {
+  width: 100%;
+}
+.overlayBottom{
+  width: 100%;
+  height: 0;
+  bottom:0;
+  left:0;
+  background-color: $blue-dark;
+}
+.contenedor:hover .overlayTop ,.contenedor:hover .overlayBottom {
+  height: 40%;
+}
+.contenedor:hover .overlayCross {
+  height: 100%;
+  width: 100%;
+}
