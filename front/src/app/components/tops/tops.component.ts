@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
+import { Router, ActivatedRoute, UrlSegment, Event, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 
 
 @Component({
