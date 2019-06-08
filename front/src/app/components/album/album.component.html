@@ -1,5 +1,3 @@
-
-
 <section>
   <div class="container-fluid">
     <div class="row">
@@ -33,7 +31,8 @@
               </div>
             </div>
             <div class="col-12 col-sm-12 col-md-7 col-xl-8 p-4">
-              <h4>Songs:</h4>
+              <h5>tipo: {{type}}</h5>
+              <h4>Canciones:</h4>
               <ul class="list-group list-group-flush songs-list">
                 <li *ngFor="let cancion of canciones" class="list-group-item song">{{cancion}}</li>
               </ul>
@@ -75,4 +74,3 @@
   </div>
 
 </section>
-

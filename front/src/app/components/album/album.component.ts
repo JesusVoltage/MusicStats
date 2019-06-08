@@ -14,6 +14,7 @@ export class AlbumComponent implements OnInit {
   private idAlbum: string = "";
   private albumData: any;
   private img: string = '';
+  private type: string = '';
   private name: string = '';
   private artistas: string = '';
   private ano: string = '';
@@ -44,6 +45,7 @@ export class AlbumComponent implements OnInit {
           
         }
          this.ano = data['release_date'];
+         this.type = data['album_type'];
       });
     });
     console.log(this.activatedRouter.snapshot.params['id']);

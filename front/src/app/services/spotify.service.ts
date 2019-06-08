@@ -61,7 +61,7 @@ export class SpotifyService {
     // Defino Headers que API de Spotify Necesita
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQC2L0hC5sCE9PfO-lCyUrGWfUtWUFgLF2BNsUCcmeG4xRuXhSoa7Y-OJP8WTRwIy15h7_qXExneNFFrnWA"
+        "Bearer BQCyc7yY23fole29OxoP32E24mC09arsN3uQMW9vKfyhaKGlxDl0M3u0A7bUb3-Y4gxDDNSrNwQOuB76xRI"
     });
 
     return this.http.get(url, { headers });
@@ -77,16 +77,81 @@ export class SpotifyService {
   }
   href: "https://api.spotify.com/v1/playlists/37i9dQZF1DXaxEKcoCdWHD/tracks"
 
-  getTopEspaña(){
-    return this.getQuery(`playlists/37i9dQZF1DXaxEKcoCdWHD/tracks?fields=items&limit=10`).pipe(
-      map(data => data['items']) 
-    );
-  }
-
+  
   getAlbumData(idAlbum: string){
     return this.getQuery(`albums/${idAlbum}`).pipe(
       map(data => data)
-    );
-  }
+      );
+    }
+    
+    getTopEspaña(){
+      return this.getQuery(`playlists/37i9dQZF1DXaxEKcoCdWHD/tracks?fields=items&limit=10`).pipe(
+        map(data => data['items']) 
+      );
+    }
+    getTopRock(){
+      return this.getQuery(`playlists/37i9dQZF1DX8FwnYE6PRvL/tracks?fields=items&limit=10`).pipe(
+        map(data => data['items']) 
+      );
+    }
+
+
+
+
+    /**Recomendaciones */
+//37i9dQZF1DXdOEFt9ZX0dh Rock
+//37i9dQZF1DWTcqUzwhNmKv Metal
+//37i9dQZF1DX3LDIBRoaCDQ Punk
+//37i9dQZF1DX10zKzsJ2jva Latino
+//37i9dQZF1DX6J5NfMJS675 Techno
+//37i9dQZF1DX3sCT1ItXgNd Pop
+//37i9dQZF1DX7YCknf2jT6s Jazz
+//37i9dQZF1DX7Y7BqFok9IQ Blues
+
+    searchPlaylist(){
+      return this.getQuery(`search?q=%22Rock%22&type=playlist`).pipe(
+        map(data => data) 
+      );
+    }
+    getRock(){
+      return this.getQuery(`playlists/37i9dQZF1DXdOEFt9ZX0dh/tracks?fields=items&limit=40`).pipe(
+        map(data => data['items']) 
+      );
+    }
+    getMetal(){
+      return this.getQuery(`playlists/37i9dQZF1DWTcqUzwhNmKv/tracks?fields=items&limit=40`).pipe(
+        map(data => data['items']) 
+      );
+    }
+    getPunk(){
+      return this.getQuery(`playlists/37i9dQZF1DX3LDIBRoaCDQ/tracks?fields=items&limit=40`).pipe(
+        map(data => data['items']) 
+      );
+    }
+    getLatino(){
+      return this.getQuery(`playlists/37i9dQZF1DX10zKzsJ2jva/tracks?fields=items&limit=40`).pipe(
+        map(data => data['items']) 
+      );
+    }
+    getTechno(){
+      return this.getQuery(`playlists/37i9dQZF1DX6J5NfMJS675/tracks?fields=items&limit=40`).pipe(
+        map(data => data['items']) 
+      );
+    }
+    getPop(){
+      return this.getQuery(`playlists/37i9dQZF1DX3sCT1ItXgNd/tracks?fields=items&limit=40`).pipe(
+        map(data => data['items']) 
+      );
+    }
+    getJazz(){
+      return this.getQuery(`playlists/37i9dQZF1DX7YCknf2jT6s/tracks?fields=items&limit=40`).pipe(
+        map(data => data['items']) 
+      );
+    }
+    getBlues(){
+      return this.getQuery(`playlists/37i9dQZF1DX7Y7BqFok9IQ/tracks?fields=items&limit=17`).pipe(
+        map(data => data['items']) 
+      );
+    }
 
 }
