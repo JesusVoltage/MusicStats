@@ -27,8 +27,9 @@
   </div>
 
   <div class="login">
-    <a routerLink="album">Iniciar Sesion</a>
-    <span> / </span>
-    <a href="#">Registrarse</a>
+    <a *ngIf="!session" routerLink="login">Iniciar Sesion</a>
+    <span *ngIf="!session"> / </span>
+    <a *ngIf="!session" routerLink="register">Registrarse</a>
+    <a *ngIf="session" routerLink="profile">Profile</a>
   </div>
 </div>

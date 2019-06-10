@@ -1,24 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
+
+declare var firebase;
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent implements OnInit {
 
   albums: any[] = [];
   private open: boolean = false;
   private clicked: boolean = false;
-
+  private session: boolean = false;
   constructor(
     private spotify: SpotifyService,
     private router: Router,
     ) { }
 
   buscar(termino: string) {
-
 
 
     // this.loading = true;
@@ -39,6 +42,14 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
+    
+    firebase.auth().onAuthStateChanged((user)=> {
+      if (user) {
+        this.session = true;
+      }else{
+        this.session = false;
+      }
+    });
 
   }
 
@@ -49,9 +60,6 @@ export class NavbarComponent implements OnInit {
   onInput(){
     this.clicked = false;
   }
-  // goToAlbum(id: String): void{
-  //   console.log(id);
-  //   this.router.navigate(['album/'+id]);
-  // }
+
 
 }

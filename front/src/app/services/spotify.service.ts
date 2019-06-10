@@ -31,28 +31,6 @@ export class SpotifyService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // Para  consulta generica
   getQuery(query: string) {
     const url = `https://api.spotify.com/v1/${query}`;
@@ -61,7 +39,7 @@ export class SpotifyService {
     // Defino Headers que API de Spotify Necesita
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQCyc7yY23fole29OxoP32E24mC09arsN3uQMW9vKfyhaKGlxDl0M3u0A7bUb3-Y4gxDDNSrNwQOuB76xRI"
+        "Bearer BQDnyHUJQfpihoGo9xy5bpI3OkGZNu_HZnuHwRDFJWMD893DX7SOjRS6KKF3cZBluFxju9EOuLV_OyqY3LY"
     });
 
     return this.http.get(url, { headers });
@@ -90,7 +68,7 @@ export class SpotifyService {
       );
     }
     getTopRock(){
-      return this.getQuery(`playlists/37i9dQZF1DX8FwnYE6PRvL/tracks?fields=items&limit=10`).pipe(
+      return this.getQuery(`playlists/37i9dQZF1DX8FwnYE6PRvL/tracks?fields=items&limit=20`).pipe(
         map(data => data['items']) 
       );
     }

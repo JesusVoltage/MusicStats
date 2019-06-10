@@ -7,27 +7,28 @@
 
         <form class="" #userForm="ngForm" (ngSubmit)="login(userForm)">
 
-          <div class="d-flex  flex-column">
-
-            <!-- <div class="input-container justify-content-center">
-              <h6>username</h6>
-              <input class="form-control" type="text" name="username" #username="ngModel"
-                [(ngModel)]="userService.selectedUser.username">
+            <div class="d-flex  flex-column">
+  
+              <div class="input-container justify-content-centerr">
+                <h6>Correo Electrónico</h6>
+                <input class="form-control" type="text" name="email" #apellidos="ngModel"
+                  [(ngModel)]="email">
+              </div>
+  
+              <div class="input-container justify-content-centerr">
+                <h6>Contraseña</h6>
+                <input class="form-control" type="text" name="password" #apellidos="ngModel"
+                  [(ngModel)]="password">
+              </div>
+  
+  
+              <div class="button-container align-self-end">
+                <button class="btn btn-dark">Entrar</button>
+              </div>
+  
             </div>
-
-            <div class="input-container justify-content-centerr">
-              <h6>contraseña</h6>
-              <input class="form-control" type="text" name="password" #apellidos="password"
-                [(ngModel)]="userService.selectedUser.password">
-            </div> -->
-
-            <div class="button-container align-self-end">
-              <button class="btn btn-dark">Iniciar sesión</button>
-            </div>
-
-          </div>
-
-        </form>
+  
+          </form>
 
       </div>
     </div>

@@ -47,7 +47,7 @@ console.log(data);
     this.spotify.getTopRock()
       .subscribe((data: any) => {
         this.topRock.push(data[0], data[1], data[2], data[3], data[4]);
-        this.topRock2.push(data[5], data[6], data[7], data[8], data[9]);
+        this.topRock2.push(data[11], data[6], data[7], data[8], data[9]);
       });
   }
 

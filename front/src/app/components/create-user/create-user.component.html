@@ -5,44 +5,31 @@
 
         <h3>Crear nueva cuenta de Musicstats</h3>
 
-        <form class="" #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+        <form class="" #userForm="ngForm" (ngSubmit)="agregar(userForm)">
 
           <div class="d-flex  flex-column">
 
-            <div class="input-container justify-content-center">
-              <h6>Nombre</h6>
-              <input class="form-control" type="text" name="nombre" #nombre="ngModel"
-                [(ngModel)]="userService.selectedUser.nombre">
+            <div class="input-container justify-content-centerr">
+              <h6>Nombre completo</h6>
+              <input class="form-control" type="text" name="name" #apellidos="ngModel"
+                [(ngModel)]="name">
             </div>
 
-            <div class="input-container justify-content-centerr">
-              <h6>Apellidos</h6>
-              <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
-                [(ngModel)]="userService.selectedUser.apellidos">
-            </div>
-
-            <div class="input-container justify-content-centerr">
-              <h6>Nombre de Usuario</h6>
-              <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
-                [(ngModel)]="userService.selectedUser.apellidos">
-            </div>
 
             <div class="input-container justify-content-centerr">
               <h6>Correo Electrónico</h6>
-              <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
-                [(ngModel)]="userService.selectedUser.apellidos">
+              <input class="form-control" type="text" name="email" #apellidos="ngModel" [(ngModel)]="email">
             </div>
 
             <div class="input-container justify-content-centerr">
               <h6>Contraseña</h6>
-              <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
-                [(ngModel)]="userService.selectedUser.apellidos">
+              <input class="form-control" type="password" name="password1" #apellidos="ngModel" [(ngModel)]="password1">
             </div>
 
             <div class="input-container justify-content-centerr">
               <h6>Confirma Contraseña</h6>
-              <input class="form-control" type="text" name="apellidos" #apellidos="ngModel"
-                [(ngModel)]="userService.selectedUser.apellidos">
+              <input class="form-control" type="password" name="password2" #apellidos="ngModel"
+                [(ngModel)]="vpassword2">
             </div>
 
 

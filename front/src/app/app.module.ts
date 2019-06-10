@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { IniciaSesionComponent } from './components/inicia-sesion/inicia-sesion.component';
 import { TopsComponent } from './components/tops/tops.component';
 import { WellcomeComponent } from "./components/wellcome/wellcome.component";
+import { ProfileComponent } from './components/profile/profile.component';
 // import { RouterModule, Routes } from '@angular/router';
 
 // const appRoutes: Routes = [
@@ -33,6 +34,7 @@ import { WellcomeComponent } from "./components/wellcome/wellcome.component";
     IniciaSesionComponent,
     TopsComponent,
     WellcomeComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

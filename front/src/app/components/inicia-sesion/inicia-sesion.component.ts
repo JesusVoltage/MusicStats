@@ -1,26 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service'
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
+declare var firebase;
 @Component({
   selector: 'app-inicia-sesion',
   templateUrl: './inicia-sesion.component.html',
   styleUrls: ['./inicia-sesion.component.scss'],
-  providers: [UserService]
 
 })
 export class IniciaSesionComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private router: Router) { }
 
   ngOnInit() {
   }
 
   login(form: NgForm) {
-    console.log('formulario', form.value);
-    this.userService.postUser(form.value).subscribe(res => {
-      console.log('this is the res', res);
+    let email = form.value.email;
+    let password = form.value.password;
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
     });
+    this.router.navigate(['']);
   }
 
 
