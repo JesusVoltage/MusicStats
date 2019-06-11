@@ -56,16 +56,17 @@
         <hr>
         <br>
 
-        <div class="form-group">
+        <form class="form-group" #userForm="ngForm" (ngSubmit)="addCritica(userForm)">
           <label for="comment">Nueva Crítica</label>
-          <textarea class="form-control" rows="5" id="comment"></textarea>
-        </div>
+          <textarea class="form-control" rows="5" name="text"
+          [(ngModel)]="texto"></textarea>
 
-        <div class="d-flex justified-content-center">
-          <button class="btn btn-primary p-2 px-3 ">
-            Publicar crítica
-          </button>
-        </div>
+          <div class="d-flex justified-content-center">
+            <button class="btn btn-primary p-2 px-3 " (click)=addCritica();>
+              Publicar crítica
+            </button>
+          </div>
+        </form>
 
       </div>
 

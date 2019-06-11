@@ -42,9 +42,9 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  ngOnInit() {
+  async ngOnInit() {
     
-    firebase.auth().onAuthStateChanged((user)=> {
+    await firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
         this.session = true;
         console.log(user);

@@ -22,8 +22,7 @@ export class CreateUserComponent implements OnInit {
 
   }
 
-  agregar(form: NgForm) {
-    console.log(form);
+  async agregar(form: NgForm) {
     //validar
     this.name = form.value.name;
     let email = form.value.email;
@@ -39,12 +38,20 @@ export class CreateUserComponent implements OnInit {
       user.updateProfile({
         displayName: form.value.name,
         photoURL: "https://cdn2.iconfinder.com/data/icons/multimedia-part-1/32/headphones-man-512.png"
-      }).then(function () {
+      }).then(function() {
+
+
+        this.goToProfile();
+        
       }).catch(function (error) {
       });
     });
 
 
+  }
+  goToProfile(){
+    console.log('creado');
+    this.router.navigate(['profile']);
 
   }
 
