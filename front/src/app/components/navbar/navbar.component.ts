@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   private open: boolean = false;
   private clicked: boolean = false;
   private session: boolean = false;
+  private user: any[] = [];
   constructor(
     private spotify: SpotifyService,
     private router: Router,
@@ -35,9 +36,9 @@ export class NavbarComponent implements OnInit {
         } else {
           this.open = false;
         }
-
-
       });
+
+      
   }
 
 
@@ -46,10 +47,15 @@ export class NavbarComponent implements OnInit {
     firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
         this.session = true;
+        console.log(user);
+        this.user[0] = user.displayName;
+        this.user[1] = user.photoURL;
       }else{
         this.session = false;
       }
     });
+
+
 
   }
 

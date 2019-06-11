@@ -4,13 +4,39 @@ h1,h2,h3,h4,h5,h6 {
   color: $grey;
   font-family: Righteous;
 }
-.recomendacion{
-  height: 275px !important; 
+.recomen-contenedor{
+  h5{
+    text-decoration: none;
+  }h5:hover{
+    text-decoration: none;
+
+  }
+  .disquito{
+    background: #dc2d5e;
+    a{
+
+      img{
+        display: flex;
+        justify-content: center;
+        width: 80%;
+      }
+
+    }a.nounderline:link 
+    { 
+    text-decoration:none; 
+    }a:hover{
+      cursor: pointer !important;
+    }
+  } 
+}.recomen-contenedor:hover{
+  text-decoration: none;
 }
 .top{
     .album{
         margin: 5px;
         width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
 

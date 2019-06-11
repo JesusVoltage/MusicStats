@@ -19,13 +19,13 @@ export class TopsComponent implements OnInit {
   private recomendacionUrl: any;
   private recomendacionNombre: any;
   private recomendacionId: any;
+  private recomendationArtista: any;
   private generos: string[] = ['Rock', 'Metal', 'Punk', 'Latino', 'Techno', 'Pop', 'Jazz', 'Blues']
   constructor(private spotify: SpotifyService, private router: Router) { }
 
   ngOnInit() {
     this.getTopEspaña();
     this.getTopRock();
-
     this.spotify.searchPlaylist()
     .subscribe((data: any) => {
 console.log(data);
@@ -40,6 +40,7 @@ console.log(data);
         
         this.topEspana.push(data[0], data[1], data[2], data[3], data[4]);
         this.topEspana2.push(data[5], data[6], data[7], data[8], data[9]);
+
       });
   }
 
@@ -48,6 +49,10 @@ console.log(data);
       .subscribe((data: any) => {
         this.topRock.push(data[0], data[1], data[2], data[3], data[4]);
         this.topRock2.push(data[11], data[6], data[7], data[8], data[9]);
+        this.recomendacionUrl = data[0].track.album.images[0].url
+        this.recomendacionNombre = data[0].track.album.name;
+        this.recomendacionId = data[0].track.album.id;
+        this.recomendationArtista =data[0].track.artists[0].name;
       });
   }
 
@@ -55,16 +60,18 @@ console.log(data);
     this.router.navigate(['album/:id']);
   }
 
-  toRecomendation(genero: String) {
+  async toRecomendation(genero: String) {
     let numerito = Math.floor(Math.random() * (40 + 1))
     String(genero);
     switch (genero) {
       case "Rock":
         this.spotify.getRock()
           .subscribe((data: any) => {
-            this.recomendacionUrl = data[numerito].track.album.images[0].url;
+            this.recomendacionUrl =  data[numerito].track.album.images[0].url;
             this.recomendacionNombre = data[numerito].track.album.name;
             this.recomendacionId = data[numerito].track.album.id;
+            this.recomendationArtista = data[numerito].track.artists[0].name;
+
           });
         break;
 
@@ -74,6 +81,7 @@ console.log(data);
             this.recomendacionUrl = data[numerito].track.album.images[0].url
             this.recomendacionNombre = data[numerito].track.album.name
             this.recomendacionId = data[numerito].track.album.id
+            this.recomendationArtista = data[numerito].track.artists[0].name;
           });
         break;
 
@@ -83,6 +91,8 @@ console.log(data);
             this.recomendacionUrl = data[numerito].track.album.images[0].url
             this.recomendacionNombre = data[numerito].track.album.name
             this.recomendacionId = data[numerito].track.album.id
+            this.recomendationArtista = data[numerito].track.artists[0].name;
+
           });
         break;
 
@@ -92,6 +102,8 @@ console.log(data);
             this.recomendacionUrl = data[numerito].track.album.images[0].url
             this.recomendacionNombre = data[numerito].track.album.name
             this.recomendacionId = data[numerito].track.album.id
+            this.recomendationArtista = data[numerito].track.artists[0].name;
+
           });
         break;
       case "Techno":
@@ -100,6 +112,8 @@ console.log(data);
             this.recomendacionUrl = data[numerito].track.album.images[0].url
             this.recomendacionNombre = data[numerito].track.album.name
             this.recomendacionId = data[numerito].track.album.id
+            this.recomendationArtista = data[numerito].track.artists[0].name;
+
           });
         break;
       case "Pop":
@@ -108,6 +122,8 @@ console.log(data);
             this.recomendacionUrl = data[numerito].track.album.images[0].url
             this.recomendacionNombre = data[numerito].track.album.name
             this.recomendacionId = data[numerito].track.album.id
+            this.recomendationArtista = data[numerito].track.artists[0].name;
+
           });
         break;
       case "Jazz":
@@ -116,6 +132,7 @@ console.log(data);
             this.recomendacionUrl = data[numerito].track.album.images[0].url
             this.recomendacionNombre = data[numerito].track.album.name
             this.recomendacionId = data[numerito].track.album.id
+            this.recomendationArtista = data[numerito].track.artists[0].name;
           });
         break;
       case "Blues":
@@ -125,6 +142,7 @@ console.log(data);
             this.recomendacionUrl = data[numerita].track.album.images[0].url
             this.recomendacionNombre = data[numerita].track.album.name
             this.recomendacionId = data[numerita].track.album.id
+            this.recomendationArtista = data[numerito].track.artists[0].name;
           });
         break;
       default:

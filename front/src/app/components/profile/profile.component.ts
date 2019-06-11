@@ -21,19 +21,8 @@ export class ProfileComponent implements OnInit {
 
   async ngOnInit() {
     
-    var user = await firebase.auth().currentUser;
-    var name, email, photoUrl, uid, emailVerified;
-    
-    console.log(this.user);
-    if (user != null) {
-      name = user.displayName;
-      email = user.email;
-      photoUrl = user.photoURL;
-      emailVerified = user.emailVerified;
-      uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-      // this value to authenticate with your backend server, if
-      // you have one. Use User.getToken() instead.
-    }
+
+    await this.getData();
   }
 
   logout() {
@@ -43,5 +32,11 @@ export class ProfileComponent implements OnInit {
     });
     this.router.navigate(['']);
   }
-
+  async getData(){
+    var user = await firebase.auth().currentUser;
+    console.log(user);
+    this.name = user.displayName;
+    this.photoUrl = user.photoURL;
+    this.email = user.email;
+  }
 }

@@ -12,7 +12,9 @@ declare var firebase;
   styleUrls: ['./create-user.component.scss'],
   providers: [UserService]
 })
-export class CreateUserComponent implements OnInit  {
+export class CreateUserComponent implements OnInit {
+
+  private name: string;
 
   constructor(
     private router: Router) { }
@@ -20,39 +22,32 @@ export class CreateUserComponent implements OnInit  {
 
   }
 
-  agregar(form: NgForm){
+  agregar(form: NgForm) {
     console.log(form);
     //validar
+    this.name = form.value.name;
     let email = form.value.email;
     let password = form.value.password1;
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
       // ...
-    });
+    }).then(function () {
 
-
-    var user = firebase.auth().currentUser;
-
-    if (user) {
-
+      var user = firebase.auth().currentUser;
       user.updateProfile({
         displayName: form.value.name,
         photoURL: "https://cdn2.iconfinder.com/data/icons/multimedia-part-1/32/headphones-man-512.png"
-      }).then(function() {
-      }).catch(function(error) {
+      }).then(function () {
+      }).catch(function (error) {
       });
-      console.log('done',form.value.name);
-    } else {
-      console.log('dont done');
+    });
 
-    }
-    
-    
-    this.router.navigate(['']);
+
 
   }
+
 
 
 

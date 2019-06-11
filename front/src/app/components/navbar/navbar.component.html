@@ -30,6 +30,13 @@
     <a *ngIf="!session" routerLink="login">Iniciar Sesion</a>
     <span *ngIf="!session"> / </span>
     <a *ngIf="!session" routerLink="register">Registrarse</a>
-    <a *ngIf="session" routerLink="profile">Profile</a>
+    <div *ngIf="session" routerLink="profile" class="profile">
+      <div class="nombre">
+          <p>{{user[0]}}</p>
+      </div>
+      <div class="img">
+        <img src="{{user[1]}}" class="img-fluid">
+      </div>
+    </div>
   </div>
 </div>
