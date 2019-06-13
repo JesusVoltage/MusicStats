@@ -1,34 +1,37 @@
 @import "../../app.component.scss";
 
-
-.critica{
+.critica {
+  background: white;
+  .avatar {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    border: 3px solid $blue-dark;
     background: white;
-    .avatar{
-      width: 50px;
-      border-radius: 50%;
-      border: 3px solid $blue-dark;
-      padding: 5px;
-      background: white;
-    }
-    .name{
-      width: 40%;
-      position: relative;
-      p{
-        font-family: $semibold;
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        left: 25%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%)
-      }
-    }
-    .texto{
+    width: 60px;
+    height: 60px;
+    img {
       width: 100%;
-      background: white;
-      p{
-        font-family: $semibold;
-  
-      }
+      height: auto;
+      border-radius: 50%;
     }
   }
+  .name {
+    display: flex;
+    width: 85%;
+    padding: 15px;
+    justify-content: left;
+    p{
+      font-family: $semibold;
+      height: 100%;
+      transform: translateY(30%);
+    }
+  }
+  .texto {
+    width: 100%;
+    background: white;
+    p {
+      font-family: $semibold;
+    }
+  }
+}

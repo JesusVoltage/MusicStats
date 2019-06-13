@@ -9,11 +9,11 @@
               <img class="img-fluid" src={{img}}>
               <div class="d-flex justify-content-between">
                 <div class="bg-blue-dark puntuacion text-center">
-                  <p>9.6</p>
+                  <p>{{albumPuntos}}</p>
                 </div>
                 <div class="dropdown bg-blue-dark tu-puntuacion text-center">
                   <button type="button" class="btn dropdown-toggle text-center" data-toggle="dropdown">
-                    <p class="text-center text-light">10</p>
+                    <p class="text-center text-light">{{userPuntos}}</p>
                   </button>
                   <div class="dropdown-menu text-dark">
                     <a class="dropdown-item" (click)=puntuar(1);>1</a>

@@ -47,10 +47,9 @@ export class NavbarComponent implements OnInit {
     await firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
         
-        this.session = true;
-        console.log(user);
         this.user[0] = user.displayName;
         this.user[1] = user.photoURL;
+        this.session = true;
       }else{
         this.session = false;
       }
