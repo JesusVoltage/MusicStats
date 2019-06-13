@@ -3,6 +3,8 @@ import { SpotifyService } from '../../services/spotify.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { NgStyle } from '@angular/common';
+import { stringify } from '@angular/core/src/util';
 
 declare var firebase;
 var db = firebase.firestore();
@@ -15,7 +17,7 @@ var db = firebase.firestore();
 })
 export class AlbumComponent implements OnInit {
 
-
+  private session: boolean;
   private user: any;
   private beCritic: boolean = false;
   private idAlbum: string = "";
@@ -26,25 +28,43 @@ export class AlbumComponent implements OnInit {
   private artistas: string = '';
   private ano: string = '';
   private canciones: any[] = [];
-  constructor(private spotify: SpotifyService, private activatedRouter: ActivatedRoute, private router: Router) { }
+
+  private criticas: any;
+  private hayCriticas: boolean = false;
+  constructor(private spotify: SpotifyService, private activatedRouter: ActivatedRoute, private router: Router) {
+
+    // this.router.routeReuseStrategy.shouldReuseRoute = function () {
+    //   return false;
+    // };
+
+    // this.mySubscription = this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     //Trick the Router into believing it's last link wasn't previously loaded
+    //     this.router.navigated = false;
+    //   }
+    // });
+  }
 
   async ngOnInit() {
 
-    
 
-    this.user = firebase.auth().currentUser;
-    this.activatedRouter.params.subscribe(routeParams => {
+
+    await firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.session = true;
+        this.user = user;
+      } else {
+        this.session = false;
+      }
+    });
+    await this.activatedRouter.params.subscribe(routeParams => {
       this.idAlbum = this.activatedRouter.snapshot.params['id'];
-
-     
-
 
       this.artistas = '';
       this.canciones = [];
       this.spotify.getAlbumData(this.idAlbum)
         .subscribe((data: any) => {
           this.albumData = data;
-          console.log(this.albumData);
           this.img = this.albumData['images'][0].url
           this.name = this.albumData['name'];
           for (let index = 0; index < this.albumData.artists.length; index++) {
@@ -60,38 +80,69 @@ export class AlbumComponent implements OnInit {
           this.ano = data['release_date'];
           this.type = data['album_type'];
         });
+
     });
 
-    this.getCriticas();
+    await this.getCriticas();
+    if (this.criticas.length > 0) this.hayCriticas = true;
+
+    console.log(this.hayCriticas, this.criticas);
 
   }
-  addCritica(form: NgForm) {
 
+
+  async addCritica(form: NgForm) {
     //comprueba conexion
-        let text = String(form.value.text);
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
-        let fecha = dd + '/' + mm + '/' + yyyy;
-        db.collection('criticas').add({
-          fecha: fecha,
-          id_album: this.idAlbum,
-          id_user: this.user.uid,
-          texto: text,
-        }).then(function(){
-          console.log('dates saved');
+    console.log(this.user);
+
+    let text = String(form.value.text);
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    let fecha = dd + '/' + mm + '/' + yyyy;
+    await db.collection('criticas').add({
+      avataruser: this.user.photoURL,
+      fecha: fecha,
+      id_album: this.idAlbum,
+      nameuser: this.user.displayName,
+      texto: text,
+    }).then(function () {
+      console.log('dates saved');
+      window.location.reload();
+
+    });
+
+
+  }
+
+  async getCriticas() {
+    let album = this.idAlbum;
+    console.log(album);
+    let critics: any[] = [];
+
+    console.log(album);
+    await db.collection('criticas').where("id_album", "==", album)
+      .get()
+      .then(function (querySnapshot) {
+
+        querySnapshot.forEach(function (doc) {
+
+          let critica = {
+            avataruser: doc.data().avataruser,
+            fecha: doc.data().fecha,
+            id_album: doc.data().id_album,
+            nameuser: doc.data().nameuser,
+            texto: doc.data().texto,
+          }
+          critics.push(critica);
+
         });
 
 
-  }
+      })
+    this.criticas = critics;
 
-  getCriticas(){
-    let album = this.idAlbum;
-    console.log(album);
-    let criticas = db.collection('criticas');
-    let query = criticas.where("texto", "==", "asdf");
-    console.log(query);
   }
 
 }

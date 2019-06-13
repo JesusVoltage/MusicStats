@@ -50,19 +50,26 @@
     <div class="row">
 
       <div class="col-sm-8 offset-sm-2 p-4 rounded bg-claro shadow criticas">
-        <h3>Críticas</h3>
-        <p class="text-center">No hay criticas aún de este album, Escribe una ahora mismo</p>
+        <h3 class="pb-3">Críticas</h3>
+        <div *ngIf="!hayCriticas">
+          <p class="text-center">No hay criticas aún de este album, Escribe una ahora mismo</p>
+        </div>
+        <div *ngIf="hayCriticas">
+          <app-critica [critica]=critica *ngFor="let critica of criticas" class="my-3">
+
+
+          </app-critica>
+        </div>
         <br>
         <hr>
         <br>
 
         <form class="form-group" #userForm="ngForm" (ngSubmit)="addCritica(userForm)">
           <label for="comment">Nueva Crítica</label>
-          <textarea class="form-control" rows="5" name="text"
-          [(ngModel)]="texto"></textarea>
+          <textarea class="form-control" rows="5" name="text" [(ngModel)]="texto"></textarea>
 
-          <div class="d-flex justified-content-center">
-            <button class="btn btn-primary p-2 px-3 " (click)=addCritica();>
+          <div class="text-center">
+            <button class="btn btn-primary p-2 px-3 mt-4" (click)=addCritica();>
               Publicar crítica
             </button>
           </div>

@@ -27,7 +27,7 @@ export class CreateUserComponent implements OnInit {
     this.name = form.value.name;
     let email = form.value.email;
     let password = form.value.password1;
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+    await firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -40,22 +40,20 @@ export class CreateUserComponent implements OnInit {
         photoURL: "https://cdn2.iconfinder.com/data/icons/multimedia-part-1/32/headphones-man-512.png"
       }).then(function() {
 
-
-        this.goToProfile();
-        
       }).catch(function (error) {
       });
     });
-
-
+    this.goToHome();
   }
-  goToProfile(){
-    console.log('creado');
-    this.router.navigate(['profile']);
+ 
 
+  async goToHome() {
+    await this.router.navigate(['']).then(() => {
+      window.location.reload();
+
+
+    });;
   }
-
-
 
 
 

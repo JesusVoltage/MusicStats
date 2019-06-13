@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
-
+declare var firebase;
 @Component({
   selector: 'app-tops',
   templateUrl: './tops.component.html',
@@ -24,6 +24,7 @@ export class TopsComponent implements OnInit {
   constructor(private spotify: SpotifyService, private router: Router) { }
 
   ngOnInit() {
+
     this.getTopEspaña();
     this.getTopRock();
     this.spotify.searchPlaylist()
@@ -56,8 +57,12 @@ console.log(data);
       });
   }
 
-  goToAlbum(id: String): void {
-    this.router.navigate(['album/:id']);
+  async goToAlbum(id: String) {
+    await this.router.navigate(['album/'+id]).then(() => {
+      window.location.reload();
+
+
+    });;
   }
 
   async toRecomendation(genero: String) {

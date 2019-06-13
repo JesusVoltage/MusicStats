@@ -11,7 +11,7 @@
 
     <div class="lista shadow" *ngIf="open && !clicked">
       <div  *ngFor="let album of albums" (click)="onLink();">
-        <a class="p-1 albuncito" routerLink="album/{{album.id}}">
+        <a class="p-1 albuncito" (click)="goTo(album.id)">
           <div class="foto">
 
             <img class="img-fluid" src={{album.images[1].url}}>

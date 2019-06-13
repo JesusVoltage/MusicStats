@@ -59,6 +59,15 @@ export class NavbarComponent implements OnInit {
 
   }
 
+
+  async goTo(id : String){
+    await this.router.navigate(['album/'+id]).then(() => {
+      window.location.reload();
+
+
+    });
+  }
+
   onLink(){
     this.clicked = true;
   }

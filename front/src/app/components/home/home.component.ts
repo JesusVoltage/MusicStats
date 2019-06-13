@@ -1,6 +1,7 @@
 import { Router, ActivatedRoute, UrlSegment, Event, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 
+declare var firebase
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private zone: NgZone) { 
 
-  ngOnInit() {
   }
+
+  async ngOnInit() {
+    await firebase.auth().onAuthStateChanged((user)=> {
+      if (user) {
+      }else{
+      }
+
+    });
+  }
+
 
 }

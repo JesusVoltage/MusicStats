@@ -15,17 +15,19 @@ export class IniciaSesionComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+
   }
 
   login(form: NgForm) {
     let email = form.value.email;
     let password = form.value.password;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
       // ...
-    });
+    })
     this.router.navigate(['']);
   }
 

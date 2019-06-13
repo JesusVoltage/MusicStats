@@ -8,8 +8,8 @@ import { ProfileComponent } from "./components/profile/profile.component";
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'album/:id', component: AlbumComponent },
+  { path: '', component: HomeComponent, runGuardsAndResolvers: "always" },
+  { path: 'album/:id', component: AlbumComponent, runGuardsAndResolvers: "always" },
   { path: 'login', component: IniciaSesionComponent },
   { path: 'register', component: CreateUserComponent },
   { path: 'profile', component: ProfileComponent },
@@ -17,7 +17,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: "reload"})],
+  imports: 
+    [RouterModule.forRoot(routes, {onSameUrlNavigation: "reload"})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

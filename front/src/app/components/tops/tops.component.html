@@ -7,7 +7,7 @@
         <h3 class="p-2 mb-4">Top 10 - España</h3>
         <div class="row p-1">
           <div class="container-fluid top text-center d-flex d-flex justify-content-around">
-            <a routerLink="album/{{album.track.album.id}}" routerLinkActive="active" *ngFor="let album of topEspana" class="contenedor album">
+            <a (click)="goToAlbum(album.track.album.id)" routerLinkActive="active" *ngFor="let album of topEspana" class="contenedor album">
                 <img src={{album.track.album.images[0].url}} class="img-fluid">
                 <div class="overlay overlayBottom">
                     <div class="text">
@@ -19,7 +19,7 @@
         </div>
         <div class="row p-1">
           <div class="container-fluid top text-center d-flex d-flex justify-content-around">
-              <a routerLink="album/{{album.track.album.id}}" *ngFor="let album of topEspana2" class="contenedor album">
+              <a (click)="goToAlbum(album.track.album.id)" *ngFor="let album of topEspana2" class="contenedor album">
                   <img src={{album.track.album.images[0].url}} class="image img-fluid">
                   <div class="overlay overlayBottom">
                       <div class="text">
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="col-sm-6 disquito" style="cursor: pointer;">
-            <a  routerLink="album/{{recomendacionId}}"class="genero-img recomen-contenedor ">  
+            <a  (click)="goToAlbum(recomendacionId)" class="genero-img recomen-contenedor ">  
               <h5>{{recomendacionNombre}} / {{recomendationArtista}}</h5>
               <img src="{{recomendacionUrl}}" class="img-fluid">
             </a>
@@ -62,7 +62,7 @@
           <h3 class="p-2 mb-4">Top 10 - Rock</h3>
           <div class="row p-1">
             <div class="container-fluid top text-center d-flex d-flex justify-content-around">
-              <a routerLink="album/{{album.track.album.id}}" routerLinkActive="active" *ngFor="let album of topRock" class="contenedor album">
+              <a (click)="goToAlbum(album.track.album.id)" *ngFor="let album of topRock" class="contenedor album">
                   <img src={{album.track.album.images[0].url}} class="image img-fluid">
                   <div class="overlay overlayBottom">
                       <div class="text">
@@ -74,7 +74,7 @@
           </div>
           <div class="row p-1">
             <div class="container-fluid top text-center d-flex d-flex justify-content-around">
-                <a routerLink="album/{{album.track.album.id}}" *ngFor="let album of topRock2" class="contenedor album">
+                <a (click)="goToAlbum(album.track.album.id)" *ngFor="let album of topRock2" class="contenedor album">
                     <img src={{album.track.album.images[0].url}} class="image img-fluid">
                     <div class="overlay overlayBottom">
                         <div class="text">
