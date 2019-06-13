@@ -86,14 +86,11 @@ export class AlbumComponent implements OnInit {
     await this.getCriticas();
     if (this.criticas.length > 0) this.hayCriticas = true;
 
-    console.log(this.hayCriticas, this.criticas);
-
   }
 
 
   async addCritica(form: NgForm) {
     //comprueba conexion
-    console.log(this.user);
 
     let text = String(form.value.text);
     var today = new Date();
@@ -118,10 +115,8 @@ export class AlbumComponent implements OnInit {
 
   async getCriticas() {
     let album = this.idAlbum;
-    console.log(album);
     let critics: any[] = [];
 
-    console.log(album);
     await db.collection('criticas').where("id_album", "==", album)
       .get()
       .then(function (querySnapshot) {
@@ -144,5 +139,57 @@ export class AlbumComponent implements OnInit {
     this.criticas = critics;
 
   }
+
+  async puntuar(puntos: number){
+    /**comprueba session del usuario */
+    if(this.session = true){
+
+      let id_user = this.user.uid;
+      let id_album = this.idAlbum;
+      let yaVotado: boolean;
+      //**comprueba si el usuario ha votado ya ese disco */
+      
+
+
+      await db.collection('punt_user').where("id_album", "==", id_album).where("id_user", "==", id_user)
+      .get()
+      .then(function (querySnapshot) {
+
+        querySnapshot.forEach(function (doc) {
+
+          if(doc.data()){
+            
+          }
+
+        });
+
+
+      })
+
+
+
+
+
+
+
+      //**to the poitnt user data */
+
+      console.log(id_album, id_user, puntos);
+
+      await db.collection('punt_user').add({
+        id_album: id_album,
+        id_user: id_user,
+        puntos: puntos,
+      }).then(function () {
+        console.log('dates saved');
+  
+      });
+
+
+
+    }
+
+  }
+
 
 }
