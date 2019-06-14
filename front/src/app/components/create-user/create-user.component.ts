@@ -14,7 +14,7 @@ declare var firebase;
 })
 export class CreateUserComponent implements OnInit {
 
-  private name: string;
+  public name: string;
 
   constructor(
     private router: Router) { }
@@ -48,6 +48,8 @@ export class CreateUserComponent implements OnInit {
  
 
   async goToHome() {
+
+    
     await this.router.navigate(['']).then(() => {
       window.location.reload();
 

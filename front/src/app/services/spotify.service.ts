@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 //importar map reactive extentions
 import { map } from "rxjs/operators";
+import { URLSearchParams } from 'url';
 
 
 
@@ -12,8 +13,7 @@ import { map } from "rxjs/operators";
 
 
 
-
-
+let clave: string;
 
 
 // Por lo general cuando se trabaja con API
@@ -29,6 +29,16 @@ export class SpotifyService {
   }
 
 
+  // getCredential(){
+
+    
+  //   let body = `grant_type=${'client_credentials'}&client_id=${'f51d1fe409c44f6cbaeac667db163e6f'}&client_secret=${'fe522770d407488c9c079ec6e6361c8d'}`;
+  //   // body.set('client_id', 'f51d1fe409c44f6cbaeac667db163e6f');
+  //   // body.set('client_secret', 'fe522770d407488c9c079ec6e6361c8d');
+
+  //   return this.http.post(`https://accounts.spotify.com/api/token`, body.toString()).pipe(map((response: any) => response.json()));
+  // }
+
 
 
   // Para  consulta generica
@@ -39,7 +49,8 @@ export class SpotifyService {
     // Defino Headers que API de Spotify Necesita
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQC00l0zas713RHpxnyTLtQO3aDu3ZoTxZRj7ERvEwiTXa3r_1DU1racMnuIumrcmPt0aEK5IsNGz43CQn8"
+        "Bearer BQB5y460qzrz7AApioXE-vwi-hdBQDoOJvb67jcqOX2PQfSw8y2hE0Tir-7sQbApRcMmVSpp3EsgLUzRbgU"
+        // ('Bearer ' + clave)
     });
 
     return this.http.get(url, { headers });

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, Event, NavigationStart } from '@angular/router';
+import { SpotifyService } from './services/spotify.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,18 +9,23 @@ import { Router, Event, NavigationStart } from '@angular/router';
 })
 export class AppComponent {
 
-  isLoading = false;
+  isLoading = true;
 
-  constructor(private router : Router){
+  constructor(private router : Router, private spotify : SpotifyService){
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
           this.isLoading = true;
       } else {
-          this.isLoading = false;
+          //this.isLoading = false;
       }
     });
   }
   title = 'front';
+
+  // ngOnInit(){
+  //   let clave = this.spotify.getCredential();
+  //   console.log('esto es la clave' , clave);
+  // }
 
 
   onActivate(event) {

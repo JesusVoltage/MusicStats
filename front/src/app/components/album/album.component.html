@@ -65,11 +65,11 @@
         <br>
 
         <form class="form-group" #userForm="ngForm" (ngSubmit)="addCritica(userForm)">
-          <label for="comment">Nueva Crítica</label>
+          <label for="comment"> <h5>Nueva Crítica</h5></label>
           <textarea class="form-control" rows="5" name="text" [(ngModel)]="texto"></textarea>
 
           <div class="text-center">
-            <button class="btn btn-primary p-2 px-3 mt-4" (click)=addCritica();>
+            <button class="btn p-2 px-3 mt-4 publicar-critica" (click)=addCritica();>
               Publicar crítica
             </button>
           </div>

@@ -22,18 +22,18 @@ export class AlbumComponent implements OnInit {
   private beCritic: boolean = false;
   private idAlbum: string = "";
   private albumData: any;
-  private img: string = '';
-  private type: string = '';
-  private name: string = '';
-  private artistas: string = '';
-  private ano: string = '';
-  private canciones: any[] = [];
+  public img: string = '';
+  public type: string = '';
+  public name: string = '';
+  public artistas: string = '';
+  public ano: string = '';
+  public canciones: any[] = [];
 
   private criticas: any;
-  private hayCriticas: boolean = false;
+  public hayCriticas: boolean = false;
 
-  private userPuntos: String;
-  private albumPuntos: String;
+  public userPuntos: String;
+  public albumPuntos: String;
   constructor(private spotify: SpotifyService, private activatedRouter: ActivatedRoute, private router: Router) {
 
     // this.router.routeReuseStrategy.shouldReuseRoute = function () {

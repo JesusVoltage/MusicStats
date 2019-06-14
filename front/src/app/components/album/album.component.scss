@@ -5,7 +5,12 @@ h1,h2,h3,h4,h5,h6 {
     font-family: Righteous;
   }
 
-
+.publicar-critica{
+  background: $blue-dark;
+  color:white;
+  border-radius: 0;
+  font-family: $semibold;
+}
 .album{
     width: 400px;
     max-width: 400px;

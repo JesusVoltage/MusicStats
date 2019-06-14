@@ -6,11 +6,11 @@
 
   <div class="search">
     <span class="fa fa-search form-control-feedback"></span>
-    <input #termino list="albums" (click)="onInput();" (input)="tcode=$event.target.value" (keyup)="buscar(termino.value)" type="text"
-      class="form-control" id="usr">
+    <input #termino list="albums" (click)="onInput();" 
+      (keyup)="buscar(termino.value)" type="text" class="form-control" id="usr">
 
     <div class="lista shadow" *ngIf="open && !clicked">
-      <div  *ngFor="let album of albums" (click)="onLink();">
+      <div *ngFor="let album of albums" (click)="onLink();">
         <a class="p-1 albuncito" (click)="goTo(album.id)">
           <div class="foto">
 
@@ -27,16 +27,20 @@
   </div>
 
   <div class="login">
+
     <a *ngIf="!session" routerLink="login">Iniciar Sesion</a>
     <span *ngIf="!session"> / </span>
     <a *ngIf="!session" routerLink="register">Registrarse</a>
+
+    
     <div *ngIf="session" routerLink="profile" class="profile">
       <div class="nombre">
-          <p>{{user[0]}}</p>
+        <p>{{userName}}</p>
       </div>
       <div class="img">
-        <img src="{{user[1]}}" class="img-fluid">
+        <img src="{{userPhoto}}" class="img-fluid">
       </div>
     </div>
+
   </div>
 </div>

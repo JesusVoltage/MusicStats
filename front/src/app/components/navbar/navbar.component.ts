@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
 
@@ -13,13 +13,15 @@ declare var firebase;
 export class NavbarComponent implements OnInit {
 
   albums: any[] = [];
-  private open: boolean = false;
-  private clicked: boolean = false;
-  private session: boolean = false;
-  private user: any[] = [];
+  public open: boolean = false;
+  public clicked: boolean = false;
+  public session: boolean = false;
+  public userName: string;
+  public userPhoto: string;
   constructor(
     private spotify: SpotifyService,
     private router: Router,
+    private ngZone: NgZone
     ) { }
 
   buscar(termino: string) {
@@ -42,23 +44,27 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  async ngOnInit() {
+  ngOnInit() {
     
-    await firebase.auth().onAuthStateChanged((user)=> {
+    firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
-        
-        this.user[0] = user.displayName;
-        this.user[1] = user.photoURL;
+        this.userName = user.displayName;
+        this.userPhoto = user.photoURL;
         this.session = true;
       }else{
         this.session = false;
+
       }
+      this.ngZone.run(() => console.log("ok"))
+
+      console.log(this.session);
     });
-
-
 
   }
 
+  ngOnDestroy( ){
+
+  }
 
   async goTo(id : String){
     await this.router.navigate(['album/'+id]).then(() => {
