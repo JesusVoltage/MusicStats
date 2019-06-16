@@ -1,19 +1,14 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { map, filter, switchMap } from 'rxjs/operators';
 //importar map reactive extentions
-import { map } from "rxjs/operators";
 import { URLSearchParams } from 'url';
+import { MapOperator } from 'rxjs/internal/operators/map';
+import { Observable } from 'rxjs';
 
 
 
 
-
-
-
-
-
-let clave: string;
 
 
 // Por lo general cuando se trabaja con API
@@ -29,16 +24,36 @@ export class SpotifyService {
   }
 
 
-  // getCredential(){
+
+  getToken(): Observable<boolean> {
+    let grant_type = 'client_credentials';
+    let client_id = 'f51d1fe409c44f6cbaeac667db163e6f';
+    let client_secret = 'fe522770d407488c9c079ec6e6361c8d';
+    const body = new HttpParams()
+      .set(`grant_type`, 'grant_type')
+      .set(`client_id`, 'f51d1fe409c44f6cbaeac667db163e6f')
+      .set(`client_secret`, 'fe522770d407488c9c079ec6e6361c8d');
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+
+    return this.http.post(`https://accounts.spotify.com/api/token`, body.toString(), { headers, observe: 'response' })
+    .pipe(map((res: HttpResponse<Object>) => res.ok))
+
+  }
+
+
+
+  getCredential(){
 
     
-  //   let body = `grant_type=${'client_credentials'}&client_id=${'f51d1fe409c44f6cbaeac667db163e6f'}&client_secret=${'fe522770d407488c9c079ec6e6361c8d'}`;
-  //   // body.set('client_id', 'f51d1fe409c44f6cbaeac667db163e6f');
-  //   // body.set('client_secret', 'fe522770d407488c9c079ec6e6361c8d');
 
-  //   return this.http.post(`https://accounts.spotify.com/api/token`, body.toString()).pipe(map((response: any) => response.json()));
-  // }
+    let body = `grant_type=${'client_credentials'}&client_id=${'f51d1fe409c44f6cbaeac667db163e6f'}&client_secret=${'fe522770d407488c9c079ec6e6361c8d'}`;
+    // body.set('client_id', 'f51d1fe409c44f6cbaeac667db163e6f');
+    // body.set('client_secret', 'fe522770d407488c9c079ec6e6361c8d');
 
+    return this.http.post(`https://accounts.spotify.com/api/token`, body.toString()).pipe(map((response: any) => response.json()));
+  }
+  
+ 
 
 
   // Para  consulta generica
@@ -49,7 +64,7 @@ export class SpotifyService {
     // Defino Headers que API de Spotify Necesita
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQDLWxiqRXL_QDYk1H9Y7JJ1qjExQyfyoQYDxLetyA6lZ1oU8s9oBnOgs6QIdf7PbUP5__JecwyKyGla__4"
+        "Bearer BQDJC9vHEh2xCBkLxTKYsp15uVi7f0Qqve-hJ1EnF4FmaWsmDStYtMKkIXsounTvh9k32Y7ZHAxq2vudqis"
         // ('Bearer ' + clave)
     });
 
@@ -82,6 +97,12 @@ export class SpotifyService {
       return this.getQuery(`playlists/37i9dQZF1DX8FwnYE6PRvL/tracks?fields=items&limit=20`).pipe(
         map(data => data['items']) 
       );
+    }
+
+    getPhotoAlbum(idAlbum: string){
+      return this.getQuery(`albums/${idAlbum}`).pipe(
+        map(data => data['images'][1].url)
+        );
     }
 
 

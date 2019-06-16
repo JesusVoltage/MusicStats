@@ -22,10 +22,10 @@ export class AppComponent {
   }
   title = 'front';
 
-  // ngOnInit(){
-  //   let clave = this.spotify.getCredential();
-  //   console.log('esto es la clave' , clave);
-  // }
+  ngOnInit(){
+    let clave = this.spotify.getToken();
+ 
+  }
 
 
   onActivate(event) {

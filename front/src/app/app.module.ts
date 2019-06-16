@@ -16,6 +16,7 @@ import { TopsComponent } from './components/tops/tops.component';
 import { WellcomeComponent } from "./components/wellcome/wellcome.component";
 import { ProfileComponent } from './components/profile/profile.component';
 import { CriticaComponent } from './components/critica/critica.component';
+import { ProfilePointsComponent } from './components/profile-points/profile-points.component';
 // import { RouterModule, Routes } from '@angular/router';
 
 // const appRoutes: Routes = [
@@ -37,6 +38,7 @@ import { CriticaComponent } from './components/critica/critica.component';
     WellcomeComponent,
     ProfileComponent,
     CriticaComponent,
+    ProfilePointsComponent,
   ],
   imports: [
     BrowserModule,

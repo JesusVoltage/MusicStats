@@ -1,0 +1,17 @@
+@import "../../app.component.scss";
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $grey;
+  font-family: Righteous;
+}
+
+.albunsito{
+    cursor: pointer;
+    transition: 0.3s;
+}.albunsito:hover{
+    transform: scale(0.9);
+}

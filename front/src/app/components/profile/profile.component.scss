@@ -9,7 +9,25 @@ h6 {
   color: $grey;
   font-family: Righteous;
 }
+.avatar-container{
+  width: 100%;
+  overflow:hidden;
+  background: $blue-main;
+ 
+  .bordecito{
+    border: solid 2px $blue-dark;
+  }
 
+  .avatarcito{
+ 
+    margin: 5px;
+    float: left;
+    display: flex;
+    width: 75px;
+    height: 75px;
+    justify-content: center;
+  }
+}
 
 .profile-container{
   display: flex;
