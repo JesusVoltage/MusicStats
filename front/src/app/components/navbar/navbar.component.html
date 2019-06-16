@@ -33,7 +33,7 @@
     <a *ngIf="!session" routerLink="register">Registrarse</a>
 
     
-    <div *ngIf="session" routerLink="profile" class="profile">
+    <div *ngIf="session" (click)="goToProfile()" class="profile">
       <div class="nombre">
         <p>{{userName}}</p>
       </div>

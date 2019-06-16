@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 
 declare var firebase;
@@ -17,12 +17,23 @@ export class ProfileComponent implements OnInit {
   private emailVerified: any;
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private ngZone: NgZone) { }
 
   async ngOnInit() {
     
 
-    await this.getData();
+    await firebase.auth().onAuthStateChanged((user)=> {
+      if (user) {
+        this.name = user.displayName;
+        this.photoUrl = user.photoURL;
+        this.email = user.email;
+        this.uid = user.uid;
+      }else{
+
+      }
+      this.ngZone.run(() => console.log("ok"))
+
+    });
   }
 
   logout() {
@@ -32,11 +43,5 @@ export class ProfileComponent implements OnInit {
     });
     this.router.navigate(['']);
   }
-  async getData(){
-    var user = await firebase.auth().currentUser;
-    console.log(user);
-    this.name = user.displayName;
-    this.photoUrl = user.photoURL;
-    this.email = user.email;
-  }
+ 
 }
