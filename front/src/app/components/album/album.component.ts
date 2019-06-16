@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ var db = firebase.firestore();
 })
 export class AlbumComponent implements OnInit {
 
-  private session: boolean;
+  private session: boolean = false;
   private user: any;
   private beCritic: boolean = false;
   private idAlbum: string = "";
@@ -34,7 +34,7 @@ export class AlbumComponent implements OnInit {
 
   public userPuntos: String;
   public albumPuntos: String;
-  constructor(private spotify: SpotifyService, private activatedRouter: ActivatedRoute, private router: Router) {
+  constructor(private ngZone: NgZone,private spotify: SpotifyService, private activatedRouter: ActivatedRoute, private router: Router) {
 
     // this.router.routeReuseStrategy.shouldReuseRoute = function () {
     //   return false;
@@ -50,14 +50,16 @@ export class AlbumComponent implements OnInit {
 
   async ngOnInit() {
 
-
-    await firebase.auth().onAuthStateChanged((user) => {
+    
+    firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
-        this.session = true;
         this.user = user;
-      } else {
+        this.session = true;
+      }else{
         this.session = false;
+
       }
+
     });
     await this.activatedRouter.params.subscribe(routeParams => {
       this.idAlbum = this.activatedRouter.snapshot.params['id'];
@@ -91,6 +93,8 @@ export class AlbumComponent implements OnInit {
     if (this.criticas.length > 0) this.hayCriticas = true;
     await this.getUserPuntos();
 
+
+    console.log('esta es la buena',this.session);
   }
 
 
@@ -200,7 +204,7 @@ export class AlbumComponent implements OnInit {
   async puntuar(puntos: number) {
     this.userPuntos = String(puntos);
     /**comprueba session del usuario */
-    if (this.session = true) {
+    if (this.session) {
 
       let id_user = this.user.uid;
       let id_album = this.idAlbum;
@@ -226,12 +230,14 @@ export class AlbumComponent implements OnInit {
         this.createPuntuacion(id_user, id_album, puntos);
       }
 
+    }else{
+      this.session = false;
     }
 
   }
 
   async getUserPuntos() {
-    if (this.session = true) {
+    if (this.session) {
       let puntitos: string;
       let id_user = this.user.uid;
       let id_album = this.idAlbum;

@@ -8,10 +8,10 @@
             <div class="col-12 col-sm-12 col-md-5 col-xl-4 p-4 album-container">
               <img class="img-fluid" src={{img}}>
               <div class="d-flex justify-content-between">
-                <div class="bg-blue-dark puntuacion text-center">
+                <div class="bg-blue-dark puntuacion text-center" [ngClass]="{' allWidth': !session}">
                   <p>{{albumPuntos}}</p>
                 </div>
-                <div class="dropdown bg-blue-dark tu-puntuacion text-center">
+                <div class="dropdown bg-blue-dark tu-puntuacion text-center" [ngClass]="{'oculto': !session}">
                   <button type="button" class="btn dropdown-toggle text-center" data-toggle="dropdown">
                     <p class="text-center text-light">{{userPuntos}}</p>
                   </button>
@@ -65,13 +65,19 @@
         <br>
 
         <form class="form-group" #userForm="ngForm" (ngSubmit)="addCritica(userForm)">
-          <label for="comment"> <h5>Nueva Crítica</h5></label>
-          <textarea class="form-control" rows="5" name="text" [(ngModel)]="texto"></textarea>
+          <label for="comment">
+            <h5>Nueva Crítica</h5>
+          </label>
+          <textarea  *ngIf="session" class="form-control" rows="5" name="text" [(ngModel)]="texto"></textarea>
 
           <div class="text-center">
-            <button class="btn p-2 px-3 mt-4 publicar-critica" (click)=addCritica();>
+            <button *ngIf="session" class="btn p-2 px-3 mt-4 publicar-critica" (click)=addCritica();>
               Publicar crítica
             </button>
+            <button type="button" class="btn p-2 px-3 mt-4 publicar-critica" data-toggle="modal" data-target="#myModal">
+                Publicar crítica
+            </button>
+
           </div>
         </form>
 
@@ -80,5 +86,37 @@
     </div>
 
   </div>
+
+
+
+
+
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Parace que no estás logeado</h4>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          Por favor, para poder realizar criticas o puntuaciones, debes estar, logueado, si aún no tienes una cuenta,
+          registrate ahora en la parte superior de la página
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
 
 </section>
