@@ -16,7 +16,7 @@ import {  OnInit, Input, OnChanges } from '@angular/core';
 
 
 
-export class AppComponent implements OnInit{
+export class AppComponent {
 
   isLoading = true;
 
@@ -31,9 +31,9 @@ export class AppComponent implements OnInit{
   }
   title = 'front';
 
-  async ngOnInit(){
-    await this.http.get(`http://localhost:3000/token`);
-  }
+  // async ngOnInit(){
+  //   await this.http.get(`http://localhost:3000/token`);
+  // }
 
 
   onActivate(event) {

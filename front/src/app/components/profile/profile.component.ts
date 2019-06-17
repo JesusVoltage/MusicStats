@@ -12,13 +12,14 @@ var db = firebase.firestore();
 export class ProfileComponent implements OnInit {
 
   private user: any = firebase.auth().currentUser;
-  private name: string;
-  private email: string;
-  private photoUrl: string
-  private uid: any;
+  public name: string;
+  public newname:string;
+  public email: string;
+  public photoUrl: string
+  public uid: any;
   private emailVerified: any;
   private newAvatar: string;
-  private avatares: string[];
+  public avatares: string[];
   private border: boolean[];
   constructor(private router: Router, private ngZone: NgZone) { }
 
@@ -47,10 +48,10 @@ export class ProfileComponent implements OnInit {
 
   cambiarNombre(form: NgForm){
 
-
+    let newname = form.value.newname;
     var user = firebase.auth().currentUser;
     user.updateProfile({
-      displayName: form.value.newname,
+      displayName: newname,
     }).then(function() {
 
       window.location.reload();
@@ -89,7 +90,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  cambiarAvatar() {
+  cambiarAvatar( ) {
     let avatarsito = this.newAvatar;
     console.log(avatarsito);
     var user = firebase.auth().currentUser;

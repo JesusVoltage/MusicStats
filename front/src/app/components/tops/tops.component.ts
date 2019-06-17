@@ -10,17 +10,17 @@ declare var firebase;
 export class TopsComponent implements OnInit {
 
 
-  private topEspana: any[] = [];
-  private topEspana2: any[] = [];
+  public topEspana: any[] = [];
+  public topEspana2: any[] = [];
 
-  private topRock: any[] = [];
-  private topRock2: any[] = [];
+  public topRock: any[] = [];
+  public topRock2: any[] = [];
 
-  private recomendacionUrl: any;
-  private recomendacionNombre: any;
-  private recomendacionId: any;
-  private recomendationArtista: any;
-  private generos: string[] = ['Rock', 'Metal', 'Punk', 'Latino', 'Techno', 'Pop', 'Jazz', 'Blues']
+  public recomendacionUrl: any;
+  public recomendacionNombre: any;
+  public recomendacionId: any;
+  public recomendationArtista: any;
+  public generos: string[] = ['Rock', 'Metal', 'Punk', 'Latino', 'Techno', 'Pop', 'Jazz', 'Blues']
   constructor(private spotify: SpotifyService, private router: Router) { }
 
   ngOnInit() {

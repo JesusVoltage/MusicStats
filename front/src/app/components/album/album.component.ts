@@ -17,7 +17,7 @@ var db = firebase.firestore();
 })
 export class AlbumComponent implements OnInit {
 
-  private session: boolean = false;
+  public session: boolean = false;
   private user: any;
   private beCritic: boolean = false;
   private idAlbum: string = "";

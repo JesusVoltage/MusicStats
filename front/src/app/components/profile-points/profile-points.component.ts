@@ -23,7 +23,7 @@ export class ProfilePointsComponent implements OnInit, OnChanges {
   @Input() idUser: any;
 
   private calificaciones: any;
-  private newPuntos: Array<puntitos> = [];
+  public newPuntos: Array<puntitos> = [];
   constructor(private spotify: SpotifyService, private router: Router) { }
 
   ngOnInit() {

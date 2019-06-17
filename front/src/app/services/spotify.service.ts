@@ -25,20 +25,22 @@ export class SpotifyService  {
   }
   
 
-  getToken(): Observable<any>{
-    return this.http.get('http://localhost:3000/token');
-  }
+  // getToken(): Observable<any>{
+  //   return this.http.get('http://localhost:3000/token');
+
+  // }
 
   // Para  consulta generica
   getQuery(query: string) {
 
     const url = `https://api.spotify.com/v1/${query}`;
 
-    this.getToken().subscribe(data => {
-      this.tokensito = data;
-    }
-  );
-  console.log(this.tokensito);
+    // this.getToken().subscribe(data => {
+    //   this.tokensito = data;
+    // }
+
+  // );
+  // console.log(this.tokensito);
     // this.http.get(`http://localhost:3000/token`).subscribe(
     //   result => this.query2(result)
   // );
@@ -46,7 +48,7 @@ export class SpotifyService  {
     // Defino Headers que API de Spotify Necesita
     const headers = new HttpHeaders({
       Authorization:
-        `Bearer BQDIxCeC_bQG3p5GGc4eptEzupcu4RCj6wByMlegjuNk90heY2yO3uNpEmuIix60Ym992RPKlSbsjmxAd3I}`
+        `Bearer BQABbo_OsRCjLtZY2PhERmOtFbKDIA7d2GUI7fmV6gS9WC23EjVpQECw-_U8tT9xnIBwprFu6QehQOU9oAk`
         // ('Bearer ' + clave)
     });
 
@@ -83,7 +85,7 @@ export class SpotifyService  {
 
     getPhotoAlbum(idAlbum: string){
       return this.getQuery(`albums/${idAlbum}`).pipe(
-        map(data => data['images'][1].url)
+        map(data => data['images'][0].url) 
         );
     }
 

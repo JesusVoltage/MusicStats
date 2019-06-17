@@ -14,27 +14,27 @@
       </div>
       <div class="col-sm-12 col-md-4 py-4 ">
 
-          <div class="search">
-              <span class="fa fa-search form-control-feedback"></span>
-              <input #termino list="albums" (click)="onInput();" (keyup)="buscar(termino.value)" type="text" class="form-control"
-                id="usr">
-          
-              <div class="lista shadow" *ngIf="open && !clicked">
-                <div *ngFor="let album of albums" (click)="onLink();">
-                  <a class="p-1 albuncito" (click)="goTo(album.id)">
-                    <div class="foto">
-          
-                      <img class="img-fluid" src={{album.images[1].url}}>
-                    </div>
-                    <div class="texto">
-                      <p class="ml-1">{{album.name}}<br>
-                        <span>{{album.artists[0].name}}</span></p>
-                    </div>
-          
-                  </a>
+        <div class="search">
+          <span class="fa fa-search form-control-feedback"></span>
+          <input #termino list="albums" (click)="onInput();" (keyup)="buscar(termino.value)" type="text"
+            class="form-control" id="usr">
+
+          <div class="lista shadow" *ngIf="open && !clicked">
+            <div *ngFor="let album of albums" (click)="onLink();">
+              <a class="p-1 albuncito" (click)="goTo(album.id)">
+                <div class="foto">
+
+                  <img class="img-fluid" src={{album.images[1].url}}>
                 </div>
-              </div>
+                <div class="texto">
+                  <p class="ml-1">{{album.name}}<br>
+                    <span>{{album.artists[0].name}}</span></p>
+                </div>
+
+              </a>
             </div>
+          </div>
+        </div>
 
 
 
@@ -42,23 +42,29 @@
       </div>
       <div class="col-sm-12 col-md-4 py-4">
 
-          <div class="login">
+        <div class="login">
+          <div class="inicio-sesion" *ngIf="!session">
 
-              <a *ngIf="!session" routerLink="login">Iniciar Sesion</a>
-              <span *ngIf="!session"> / </span>
-              <a *ngIf="!session" routerLink="register">Registrarse</a>
-          
-          
-              <div *ngIf="session" (click)="goToProfile()" class="profile">
-                <div class="nombre">
-                  <p>{{userName}}</p>
-                </div>
-                <div class="img">
-                  <img src="{{userPhoto}}" class="img-fluid">
-                </div>
-              </div>
-          
+
+            <div class="nombrecitos">
+                <a *ngIf="!session" routerLink="login">Iniciar Sesion</a>
+                <span *ngIf="!session"> / </span>
+                <a *ngIf="!session" routerLink="register">Registrarse</a>
             </div>
+            
+
+          </div>
+
+          <div *ngIf="session" (click)="goToProfile()" class="profile">
+            <div class="nombre">
+              <p>{{userName}}</p>
+            </div>
+            <div class="img">
+              <img src="{{userPhoto}}" class="img-fluid">
+            </div>
+          </div>
+
+        </div>
 
 
 
@@ -76,5 +82,5 @@
 
 
 
-  
+
 </div>

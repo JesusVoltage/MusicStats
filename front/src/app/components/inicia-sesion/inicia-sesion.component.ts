@@ -11,6 +11,8 @@ declare var firebase;
 })
 export class IniciaSesionComponent implements OnInit {
 
+  public password: string;
+  public email : string;
   constructor(
     private router: Router) { }
 
