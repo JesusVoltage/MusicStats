@@ -17,17 +17,18 @@
 
 
             <div class="input-container justify-content-centerr">
-              <h6>Correo Electrónico</h6>
+              <h6>Correo Electrónico <span *ngIf="!emailNot" class="text-danger text-normal mini-text pl-3">*correo invalido</span></h6>
               <input class="form-control" type="text" name="email" #apellidos="ngModel" [(ngModel)]="email">
+              
             </div>
 
             <div class="input-container justify-content-centerr">
-              <h6>Contraseña</h6>
+              <h6>Contraseña <span *ngIf="!passwordLong" class="text-danger text-normal mini-text pl-3">*Contraseña demasiado corta</span></h6>
               <input class="form-control" type="password" name="password1" #apellidos="ngModel" [(ngModel)]="password1">
             </div>
 
             <div class="input-container justify-content-centerr">
-              <h6>Confirma Contraseña</h6>
+              <h6>Confirma Contraseña <span *ngIf="!passwordNot" class="text-danger text-normal mini-text pl-3">*Las contraseñas no coinciden </span></h6>
               <input class="form-control" type="password" name="password2" #apellidos="ngModel"
                 [(ngModel)]="vpassword2">
             </div>

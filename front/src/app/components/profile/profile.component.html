@@ -2,27 +2,148 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-8 offset-sm-2 p-4 rounded bg-claro shadow">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
-            <h3>{{name}}</h3>
-            <div class="container profile-container py-3">
-              <div class="info pl-5">
-                <p>Email:  {{email}}</p>
-              </div>
-              <div class="avatar">
-                <img src="{{photoUrl}}" class="img-fluid mb-1">
-                <input id="file" input (change)="picked($event,1)"  value="Cambiar avatar" type="file" hidden>
-                <label for="file" class="btn bg-blue-dark my-1" > Cambiar avatar</label>
+            <h3>{{name}} <span class="cambio-nombre ml-4" data-toggle="modal" data-target="#nombre">Cambiar
+                nombre</span></h3>
+          </div>
+          <div class="row">
 
-                <button class="btn bg-blue-dark"  (click)="logout();">Cerrar sesión</button>
+            <div class="col-sm-12 col-md-8">
+
+              <div class="info p-5">
+                <p>Email: {{email}}</p>
               </div>
 
             </div>
+
+
+            <div class="col-sm-12 col-md-4">
+
+
+
+              <div class="container profile-container py-3">
+
+
+                <div class="avatar">
+                  <form class="" #userForm="ngForm" (ngSubmit)="cambiarAvatar(userForm)">
+                    <img src="{{photoUrl}}" class="img-fluid mb-1">
+
+
+
+                  </form>
+                  <button class="btn bg-blue-dark" (click)="logout();">Cerrar sesión</button>
+                  <button type="button" class="btn bg-blue-dark" data-toggle="modal" data-target="#avatar">cambiar
+                    avatar </button>
+                  <button type="button" class="btn bg-blue-dark" data-toggle="modal" data-target="#myModal">Eliminar
+                    cuenta
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
           </div>
-     
+
         </div>
       </div>
     </div>
 
   </div>
+
+
+
+
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Eliminar tu cuenta de Musicstats</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          Usted está a punto de eliminar permanentemente su cuenta de Musicstats, para continuar escriba su correo y su
+          contraseña
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn bg-blue-dark text-light" data-dismiss="modal" (click)="deleteUser()">Eliminar
+            cuenta</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="avatar">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Escoje un nuevo avatar</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body avatar-container">
+          <div *ngFor="let avatar of avatares; let i = index" class="avatarcito rounded"
+            [ngClass]="{'bordecito': border[i]}" (click)="selectAvatar(avatar.url, i)">
+            <img src="{{avatar.url}}" class="img-fluid">
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn bg-blue-dark text-light" data-dismiss="modal"
+            (click)="cambiarAvatar()">continuar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="nombre">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Escriba su nuevo nombre de usuario</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form class="" #userForm="ngForm" (ngSubmit)="cambiarNombre(userForm)">
+            <div class="input-container justify-content-centerr">
+              <input class="form-control" type="text" name="newname" #apellidos="ngModel" [(ngModel)]="newname">
+            </div>
+            <button class="btn bg-blue-dark text-light mt-2">Cambiar nombre</button>
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" >Cancelar</button>
+          <button type="button"  data-dismiss="modal"
+            (click)="cambiarNombre()">Cambiar nombre</button>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+
+
+  <app-profile-points [idUser]="uid"></app-profile-points>
 </section>
