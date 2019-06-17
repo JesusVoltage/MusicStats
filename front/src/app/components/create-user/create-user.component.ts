@@ -15,6 +15,9 @@ declare var firebase;
 export class CreateUserComponent implements OnInit {
 
   public name: string;
+  public email: string;
+  public password1 : string;
+  public vpassword2 : string;
 
   constructor(
     private router: Router) { }
