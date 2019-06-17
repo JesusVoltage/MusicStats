@@ -45,6 +45,22 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  cambiarNombre(form: NgForm){
+
+
+    var user = firebase.auth().currentUser;
+    user.updateProfile({
+      displayName: form.value.newname,
+    }).then(function() {
+
+      window.location.reload();
+
+
+    }).catch(function (error) {
+    });
+  }
+
+
   async getAvatars(){
     let photos: string[] = [];
     let bordecito: boolean[] = [];

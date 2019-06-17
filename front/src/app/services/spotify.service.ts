@@ -8,9 +8,6 @@ import { Observable } from 'rxjs';
 
 
 
-
-
-
 // Por lo general cuando se trabaja con API
 // Es necesario Centralizar la Informacion por eso este Service
 
@@ -18,53 +15,38 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: "root"
 })
-export class SpotifyService {
+export class SpotifyService  {
+
+  private tokensito:any;
   constructor(private http: HttpClient) {
-    // console.log('Spotify Service Listo');
-  }
 
+  
 
-
-  getToken(): Observable<boolean> {
-    let grant_type = 'client_credentials';
-    let client_id = 'f51d1fe409c44f6cbaeac667db163e6f';
-    let client_secret = 'fe522770d407488c9c079ec6e6361c8d';
-    const body = new HttpParams()
-      .set(`grant_type`, 'grant_type')
-      .set(`client_id`, 'f51d1fe409c44f6cbaeac667db163e6f')
-      .set(`client_secret`, 'fe522770d407488c9c079ec6e6361c8d');
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-
-    return this.http.post(`https://accounts.spotify.com/api/token`, body.toString(), { headers, observe: 'response' })
-    .pipe(map((res: HttpResponse<Object>) => res.ok))
-
-  }
-
-
-
-  getCredential(){
-
-    
-
-    let body = `grant_type=${'client_credentials'}&client_id=${'f51d1fe409c44f6cbaeac667db163e6f'}&client_secret=${'fe522770d407488c9c079ec6e6361c8d'}`;
-    // body.set('client_id', 'f51d1fe409c44f6cbaeac667db163e6f');
-    // body.set('client_secret', 'fe522770d407488c9c079ec6e6361c8d');
-
-    return this.http.post(`https://accounts.spotify.com/api/token`, body.toString()).pipe(map((response: any) => response.json()));
   }
   
- 
 
+  getToken(): Observable<any>{
+    return this.http.get('http://localhost:3000/token');
+  }
 
   // Para  consulta generica
   getQuery(query: string) {
+
     const url = `https://api.spotify.com/v1/${query}`;
 
+    this.getToken().subscribe(data => {
+      this.tokensito = data;
+    }
+  );
+  console.log(this.tokensito);
+    // this.http.get(`http://localhost:3000/token`).subscribe(
+    //   result => this.query2(result)
+  // );
     //Pipe transformacion de Datos
     // Defino Headers que API de Spotify Necesita
     const headers = new HttpHeaders({
       Authorization:
-        "Bearer BQBdJiEkMesMm5oVgIAO-32qaZrJwmf5cFdnZW3UbEIiE92N9fsu1xnrbodLfYrIWa5bJsQPjnhGMqZuJ8Y"
+        `Bearer BQDIxCeC_bQG3p5GGc4eptEzupcu4RCj6wByMlegjuNk90heY2yO3uNpEmuIix60Ym992RPKlSbsjmxAd3I}`
         // ('Bearer ' + clave)
     });
 
@@ -82,9 +64,9 @@ export class SpotifyService {
   href: "https://api.spotify.com/v1/playlists/37i9dQZF1DXaxEKcoCdWHD/tracks"
 
   
-  getAlbumData(idAlbum: string){
+    getAlbumData(idAlbum: string){
     return this.getQuery(`albums/${idAlbum}`).pipe(
-      map(data => data)
+       map(data => data)
       );
     }
     

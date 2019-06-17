@@ -74,7 +74,7 @@
             <button *ngIf="session" class="btn p-2 px-3 mt-4 publicar-critica" (click)=addCritica();>
               Publicar crítica
             </button>
-            <button type="button" class="btn p-2 px-3 mt-4 publicar-critica" data-toggle="modal" data-target="#myModal">
+            <button type="button" *ngIf="!session" class="btn p-2 px-3 mt-4 publicar-critica" data-toggle="modal" data-target="#myModal">
                 Publicar crítica
             </button>
 

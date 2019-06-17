@@ -15,7 +15,15 @@ $light: #f6f6f6;
 
 $semibold: 'Open Sans', semibold;
 $normal: 'Open Sans', regular;
+.text-normal{
+$normal: 'Open Sans', regular !important;
 
+}
+
+
+.mini-text{
+    font-size: 75%;
+}
 /* Global styles */
 
 

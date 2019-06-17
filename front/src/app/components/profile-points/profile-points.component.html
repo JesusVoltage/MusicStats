@@ -7,7 +7,7 @@
 
         <div class="container-fluid">
           <div class="row">
-            <div class="col-sm-2 my-3 albunsito " *ngFor="let a of newPuntos; let i = index" (click)="goToAlbum(a.id_album)">
+            <div class="col-sm-4 col-md-2 my-3 albunsito " *ngFor="let a of newPuntos; let i = index" (click)="goToAlbum(a.id_album)">
               <div>
                 <div>
                   <img src="{{a.photo}}" class="img-fluid">
